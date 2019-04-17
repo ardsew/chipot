@@ -1,0 +1,9 @@
+.container {
+    padding: 25px 25px 10px 0px;
+    float: left;
+}
+
+#user-info {
+    padding: 25px 10px 25px 10px;
+    float: center;
+}

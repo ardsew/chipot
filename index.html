@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Minecraft Idle Clicker</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    </head>
+        <body>
+            <div>
+
+                <div id="user-info" class="container" style="width: 50%">
+                    <div>
+                       <h2>Wood: <var id="woodAmt">0</var></h2>
+                       <h2>Stone: <var id="stoneAmt">0</var></h2>
+                       <h2>Coal: <var id="coalAmt">0</var></h2>
+                    </div>
+                </div>
+
+                <div id="user-info" class="container" style="width: 50%">
+                    <div>
+                        <h2>Iron: <var id="ironAmt">0</var></h2>
+                        <h2>Gold: <var id="goldAmt">0</var></h2>
+                        <h2>Diamond: <var id="diamondAmt">0</var></h2>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="container" style="width: 50%">
+
+                        <h4>0 Seconds: Wood</h4>
+
+                        <div class="progress">
+                            <div id="wood-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div>
+                            <button id="wood-button" type="button" class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="container" style="width: 50%">
+
+                        <h4>3 Seconds: Stone</h4>
+
+                        <div class="progress">
+                            <div id="stone-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+        
+                        <div>
+                            <button id="stone-button" type="button" class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="container" style="width: 50%">
+
+                        <h4>5 Seconds: Coal</h4>
+
+                        <div class="progress">
+                            <div id="coal-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div>
+                            <button id="coal-button" type="button" class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="container" style="width: 50%">
+
+                        <h4>7 Seconds: Iron</h4>
+
+                        <div class="progress">
+                            <div id="iron-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div>
+                            <button id="iron-button" type="button" class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="container" style="width: 50%">
+
+                        <h4>9 Seconds: Gold</h4>
+
+                        <div class="progress">
+                            <div id="gold-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div>
+                            <button id="gold-button" type="button" class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="container" style="width: 50%">
+
+                        <h4>11 Seconds: Diamond</h4>
+
+                        <div class="progress">
+                            <div id="diamond-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div>
+                            <button id="diamond-button" type="button" class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </body>
+
+        <script src="app.js"></script>
+
+</html>

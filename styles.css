@@ -8,6 +8,40 @@
     float: center;
 }
 
+.btn.btn-primary{
+  background-color: transparent;
+  border-color: white;
+}
+
+.btn.btn-primary:hover{
+  background-color: green;
+  border-color: white;
+}
+
+.btn.btn-primary:not(:hover){
+  background-color: transparent;
+  border-color: white;
+}
+
+.btn.btn-primary:disabled{
+  background-color: transparent;
+  border-color: white;
+}
+
+.btn.btn-primary:disabled:hover{
+  background-color: red;
+  border-color: white;
+}
+
+.btn.btn-primary:disabled:not(:hover){
+  background-color: transparent;
+  border-color: white;
+}
+
+img{
+  width: 100px;
+  height: 100px;
+}
 #wood-progress-bar{
     background-color: #765D27;
 }

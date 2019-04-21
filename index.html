@@ -2,182 +2,228 @@
 
 <html>
 
-    <head>
-        <title>Minecraft Idle Clicker</title>
+<head>
+    <title>Minecraft Idle Clicker</title>
 
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="jquery-3.4.0.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="jquery-3.4.0.min.js"></script>
 
-    </head>
-        <body>
-            <div>
-
-                <div id="user-info" class="container" style="width: 50%">
-                    <div>
-                       <h2>Wood: <var id="woodAmt">0</var></h2>
-                       <h2>Stone: <var id="stoneAmt">0</var></h2>
-                       <h2>Coal: <var id="coalAmt">0</var></h2>
-                    </div>
-                </div>
-
-                <div id="user-info" class="container" style="width: 50%">
-                    <div>
-                        <h2>Iron: <var id="ironAmt">0</var></h2>
-                        <h2>Gold: <var id="goldAmt">0</var></h2>
-                        <h2>Diamond: <var id="diamondAmt">0</var></h2>
-                    </div>
-                </div>
-
+</head>
+<body>
+<div>
+    <!--
+            <div id="user-info" class="container" style="width: 50%">
                 <div>
-                    <div class="container" style="width: 50%">
-
-                        <h4>0 Seconds: Wood</h4>
-
-                        <div class="progress">
-                            <div id="wood-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width:0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div>
-                            <button id="wood-button" type="button" class="btn btn-primary"><img src="https://vignette.wikia.nocookie.net/minecraftpocketedition/images/5/55/Acacia_Wood.png/revision/latest?cb=20140318071948"></button>
-                        </div>
-                    </div>
+                   <h2>Coal: <var id="coalAmt">0</var></h2>
                 </div>
-
-                <div>
-                    <div class="container" style="width: 50%">
-
-                        <h4>3 Seconds: Stone</h4>
-
-                        <div class="progress">
-                            <div id="stone-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-        
-                        <div>
-                            <button id="stone-button" type="button" class="btn btn-primary"><img src="https://gamepedia.cursecdn.com/minecraft_gamepedia/1/17/Stone_TextureUpdate.png?version=24f75525684f684aca767e85af51a160"></button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div>
-                    <div class="container" style="width: 50%">
-
-                        <h4>5 Seconds: Coal</h4>
-
-                        <div class="progress">
-                            <div id="coal-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div>
-                            <button id="coal-button" type="button" class="btn btn-primary"><img src="https://gamepedia.cursecdn.com/minecraft_gamepedia/8/81/Block_of_Coal.png?version=e2f99400f0cb0e0c3af6b05870382bd5"></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="container" style="width: 50%">
-
-                        <h4>7 Seconds: Iron</h4>
-
-                        <div class="progress">
-                            <div id="iron-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div>
-                            <button id="iron-button" type="button" class="btn btn-primary"><img src="http://www.minecraftopia.com/images/blocks/iron_block.png"></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="container" style="width: 50%">
-
-                        <h4>9 Seconds: Gold</h4>
-
-                        <div class="progress">
-                            <div id="gold-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div>
-                            <button id="gold-button" type="button" class="btn btn-primary"><img src="http://vignette3.wikia.nocookie.net/lotrminecraftmod/images/1/17/GoldBlock.png/revision/latest?cb=20160604170118"></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="container" style="width: 50%">
-
-                        <h4>11 Seconds: Diamond</h4>
-
-                        <div class="progress">
-                            <div id="diamond-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div>
-                            <button id="diamond-button" type="button"  class="btn btn-primary"><img src="https://vignette.wikia.nocookie.net/minecraft/images/4/40/Block_of_Diamond.png/revision/latest?cb=20111018170718"></button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </body>
 
-        <script src="app.js"></script>
-	<script>
-	      $('#wood-button').click(function(){
-		$('#wood-button').attr('disabled','disabled');
-		$('#wood-progress-bar').animate({width:'100%'}, 1, 'linear');
-        	setTimeout(function() {
-           		$('#wood-button').removeAttr('disabled');
-			$('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');
-        	}, 1000);
-	      });
 
-	      $('#stone-button').click(function(){
-		$('#stone-button').attr('disabled','disabled');
-        	setTimeout(function() {
-           		$('#stone-button').removeAttr('disabled');
-			$('#stone-progress-bar').animate({width:'0%'}, 100, 'swing');
-        	}, 3000);
-		$('#stone-progress-bar').animate({width:'100%'}, 2000, 'linear');
-	      });
+            <div id="user-info" class="container" style="width: 50%">
+                <div>
+                    <h2>Iron: <var id="ironAmt">0</var></h2>
+                    <h2>Gold: <var id="goldAmt">0</var></h2>
+                    <h2>Diamond: <var id="diamondAmt">0</var></h2>
+                </div>
+            </div>
+    -->
 
-	      $('#coal-button').click(function(){
-		$('#coal-button').attr('disabled','disabled');
-        	setTimeout(function() {
-           		$('#coal-button').removeAttr('disabled');
-			$('#coal-progress-bar').animate({width:'0%'}, 100, 'swing');
-        	}, 5000);
-		$('#coal-progress-bar').animate({width:'100%'}, 4000, 'linear');
-	      });
+    <div>
+    <div class="modal-body row">
 
-     	      $('#iron-button').click(function(){
-		$('#iron-button').attr('disabled','disabled');
-        	setTimeout(function() {
-           		$('#iron-button').removeAttr('disabled');
-			$('#iron-progress-bar').animate({width:'0%'}, 100, 'swing');
-        	}, 7000);
-		$('#iron-progress-bar').animate({width:'100%'}, 6000, 'linear');
-	      });
+        <div class="col-md-3">
 
-	      $('#gold-button').click(function(){
-		$('#gold-button').attr('disabled','disabled');
-        	setTimeout(function() {
-           		$('#gold-button').removeAttr('disabled');
-			$('#gold-progress-bar').animate({width:'0%'}, 100, 'swing');
-        	}, 9000);
-		$('#gold-progress-bar').animate({width:'100%'}, 8000, 'linear');
-	      });
+            <div class="container" style="width: 100%">
 
-	      $('#diamond-button').click(function(){
-		$('#diamond-button').attr('disabled','disabled');
-        	setTimeout(function() {
-           		$('#diamond-button').removeAttr('disabled');
-			$('#diamond-progress-bar').animate({width:'0%'}, 100, 'swing');
-        	}, 11000);
-		$('#diamond-progress-bar').animate({width:'100%'}, 10000, 'linear');
-	      });
-	</script>
+                <h4>0 Seconds: Wood</h4>
 
-</html>
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="wood-progress-bar" role="progressbar" style="width:0%"></div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="wood-button" type="button"><img src="https://vignette.wikia.nocookie.net/minecraftpocketedition/images/5/55/Acacia_Wood.png/revision/latest?cb=20140318071948"></button>
+                    </div>
+
+                    <div class="col-md-6">
+                        <br>
+                        <h2><var id="woodAmt">0</var></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="width: 100%">
+
+                <h4>3 Seconds: Stone</h4>
+
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar progress-bar-striped" id="stone-progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="stone-button" type="button"><img src="https://gamepedia.cursecdn.com/minecraft_gamepedia/1/17/Stone_TextureUpdate.png?version=24f75525684f684aca767e85af51a160"></button>
+                    </div>
+
+                    <div class="col-md-6">
+			<br>
+                        <h2><var id="stoneAmt">0</var></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="width: 100%">
+
+                <h4>5 Seconds: Coal</h4>
+
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="coal-progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="coal-button" type="button"><img src="https://gamepedia.cursecdn.com/minecraft_gamepedia/8/81/Block_of_Coal.png?version=e2f99400f0cb0e0c3af6b05870382bd5"></button>
+                    </div>
+
+                    <div class="col-md-6">
+			<br>
+                        <h2><var id="coalAmt">0</var></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="container" style="width: 100%">
+
+                <h4>7 Seconds: Iron</h4>
+
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="iron-progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="iron-button" type="button"><img src="http://www.minecraftopia.com/images/blocks/iron_block.png"></button>
+                    </div>
+
+                    <div class="col-md-6">
+			<br>
+                        <h2><var id="ironAmt">0</var></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="width: 100%">
+
+                <h4>9 Seconds: Gold</h4>
+
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="gold-progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="gold-button" type="button"><img src="http://vignette3.wikia.nocookie.net/lotrminecraftmod/images/1/17/GoldBlock.png/revision/latest?cb=20160604170118"></button>
+                    </div>
+
+                    <div class="col-md-6">
+			<br>
+                        <h2><var id="goldAmt">0</var></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="width: 100%">
+
+                <h4>11 Seconds: Diamond</h4>
+
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="diamond-progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="diamond-button"  type="button"><img src="https://vignette.wikia.nocookie.net/minecraft/images/4/40/Block_of_Diamond.png/revision/latest?cb=20111018170718"></button>
+                    </div>
+
+                    <div class="col-md-6">
+			<br>
+                        <h2><var id="diamondAmt">0</var></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script src="app.js"></script>
+<script>
+    $('#wood-button').click(function(){
+        $('#wood-button').attr('disabled','disabled');
+        $('#wood-progress-bar').animate({width:'100%'}, 1, 'linear');
+        setTimeout(function() {
+            $('#wood-button').removeAttr('disabled');
+            $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');
+        }, 1000);
+    });
+
+    $('#stone-button').click(function(){
+        $('#stone-button').attr('disabled','disabled');
+        setTimeout(function() {
+            $('#stone-button').removeAttr('disabled');
+            $('#stone-progress-bar').animate({width:'0%'}, 100, 'swing');
+        }, 3000);
+        $('#stone-progress-bar').animate({width:'100%'}, 2000, 'linear');
+    });
+
+    $('#coal-button').click(function(){
+        $('#coal-button').attr('disabled','disabled');
+        setTimeout(function() {
+            $('#coal-button').removeAttr('disabled');
+            $('#coal-progress-bar').animate({width:'0%'}, 100, 'swing');
+        }, 5000);
+        $('#coal-progress-bar').animate({width:'100%'}, 4000, 'linear');
+    });
+
+    $('#iron-button').click(function(){
+        $('#iron-button').attr('disabled','disabled');
+        setTimeout(function() {
+            $('#iron-button').removeAttr('disabled');
+            $('#iron-progress-bar').animate({width:'0%'}, 100, 'swing');
+        }, 7000);
+        $('#iron-progress-bar').animate({width:'100%'}, 6000, 'linear');
+    });
+
+    $('#gold-button').click(function(){
+        $('#gold-button').attr('disabled','disabled');
+        setTimeout(function() {
+            $('#gold-button').removeAttr('disabled');
+            $('#gold-progress-bar').animate({width:'0%'}, 100, 'swing');
+        }, 9000);
+        $('#gold-progress-bar').animate({width:'100%'}, 8000, 'linear');
+    });
+
+    $('#diamond-button').click(function(){
+        $('#diamond-button').attr('disabled','disabled');
+        setTimeout(function() {
+            $('#diamond-button').removeAttr('disabled');
+            $('#diamond-progress-bar').animate({width:'0%'}, 100, 'swing');
+        }, 11000);
+        $('#diamond-progress-bar').animate({width:'100%'}, 10000, 'linear');
+    });
+</script>
+
+</html><!DOCTYPE html>
+
+

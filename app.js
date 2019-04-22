@@ -55,11 +55,11 @@ var ItemHealths = {
 
 var MineTimes = {
     woodTime: 0,
-    stoneTime: 300,
-    coalTime: 500,
-    ironTime: 700,
-    goldTime: 900,
-    diamondTime: 1100
+    stoneTime: 3000,
+    coalTime: 5000,
+    ironTime: 7000,
+    goldTime: 9000,
+    diamondTime: 11000
 }
 
 main();
@@ -85,27 +85,9 @@ function main() {
 }
 
 function mine(health, item, time) {
-    var counter = 0;
-    var getItem = setInterval(function() {
-        if (counter < health) {
-            if (item != 'wood') {
-                updateProgressBar(item, time/1000);
-                counter++;
-            } else {
-                counter++;
-            }
-        } else {
-            if (width >= 100 && item != 'wood') {
-                addItemToUser(item)
-                clearInterval(getItem);
+    setTimeout(function() {
+                addItemToUser(item);
                 updateUI();
-                resetProgressBar();
-            } else {
-                addItemToUser(item)
-                clearInterval(getItem);
-                updateUI();
-            }
-        }
     }, time)
 }
 

@@ -7,6 +7,7 @@
 
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="jquery-3.4.0.min.js"></script>
 
     </head>
         <body>
@@ -34,7 +35,7 @@
                         <h4>0 Seconds: Wood</h4>
 
                         <div class="progress">
-                            <div id="wood-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div id="wood-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width:0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
 
                         <div>
@@ -49,7 +50,7 @@
                         <h4>3 Seconds: Stone</h4>
 
                         <div class="progress">
-                            <div id="stone-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div id="stone-progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
         
                         <div>
@@ -122,5 +123,60 @@
         </body>
 
         <script src="app.js"></script>
+	<script>
+	      $('#wood-button').click(function(){
+		$('#wood-button').attr('disabled','disabled');
+		$('#wood-progress-bar').animate({width:'100%'}, 1, 'linear');
+        	setTimeout(function() {
+           		$('#wood-button').removeAttr('disabled');
+			$('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');
+        	}, 1000);
+	      });
+
+	      $('#stone-button').click(function(){
+		$('#stone-button').attr('disabled','disabled');
+        	setTimeout(function() {
+           		$('#stone-button').removeAttr('disabled');
+			$('#stone-progress-bar').animate({width:'0%'}, 100, 'swing');
+        	}, 3000);
+		$('#stone-progress-bar').animate({width:'100%'}, 2000, 'linear');
+	      });
+
+	      $('#coal-button').click(function(){
+		$('#coal-button').attr('disabled','disabled');
+        	setTimeout(function() {
+           		$('#coal-button').removeAttr('disabled');
+			$('#coal-progress-bar').animate({width:'0%'}, 100, 'swing');
+        	}, 5000);
+		$('#coal-progress-bar').animate({width:'100%'}, 4000, 'linear');
+	      });
+
+     	      $('#iron-button').click(function(){
+		$('#iron-button').attr('disabled','disabled');
+        	setTimeout(function() {
+           		$('#iron-button').removeAttr('disabled');
+			$('#iron-progress-bar').animate({width:'0%'}, 100, 'swing');
+        	}, 7000);
+		$('#iron-progress-bar').animate({width:'100%'}, 6000, 'linear');
+	      });
+
+	      $('#gold-button').click(function(){
+		$('#gold-button').attr('disabled','disabled');
+        	setTimeout(function() {
+           		$('#gold-button').removeAttr('disabled');
+			$('#gold-progress-bar').animate({width:'0%'}, 100, 'swing');
+        	}, 9000);
+		$('#gold-progress-bar').animate({width:'100%'}, 8000, 'linear');
+	      });
+
+	      $('#diamond-button').click(function(){
+		$('#diamond-button').attr('disabled','disabled');
+        	setTimeout(function() {
+           		$('#diamond-button').removeAttr('disabled');
+			$('#diamond-progress-bar').animate({width:'0%'}, 100, 'swing');
+        	}, 11000);
+		$('#diamond-progress-bar').animate({width:'100%'}, 10000, 'linear');
+	      });
+	</script>
 
 </html>

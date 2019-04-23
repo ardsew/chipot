@@ -7,3 +7,27 @@
     padding: 25px 10px 25px 10px;
     float: center;
 }
+
+#wood-progress-bar{
+    background-color: #765D27;
+}
+
+#stone-progress-bar{
+    background-color: gray;
+}
+
+#coal-progress-bar{
+    background-color: black;
+}
+
+#iron-progress-bar{
+    background-color: silver;
+}
+
+#gold-progress-bar{
+    background-color: gold;
+}
+
+#diamond-progress-bar{
+    background-color: #7CE0E0;
+}

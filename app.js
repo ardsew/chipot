@@ -23,7 +23,14 @@ var Buttons = {
     coalButton: document.getElementById('coal-button'),
     ironButton: document.getElementById('iron-button'),
     goldButton: document.getElementById('gold-button'),
-    diamondButton: document.getElementById('diamond-button')
+    diamondButton: document.getElementById('diamond-button'),
+
+    woodMinerButton: document.getElementById('wood-miner-button'),
+    stoneMinerButton: document.getElementById('stone-miner-button'),
+    coalMinerButton: document.getElementById('coal-miner-button'),
+    ironMinerButton: document.getElementById('iron-miner-button'),
+    goldMinerButton: document.getElementById('gold-miner-button'),
+    diamondMinerButton: document.getElementById('diamond-miner-button')
 }
 
 var UIDisplay = {
@@ -62,6 +69,26 @@ var MineTimes = {
     diamondTime: 11000
 }
 
+// The price corresponds to that resource
+// Example: wood miner would require 800 wood
+var MinerPrice = {
+    woodMinerPrice: 200,
+    stoneMinerPrice: 150,
+    coalMinerPrice: 125,
+    ironMinerPrice: 100,
+    goldMinerPrice: 75,
+    diamondMinerPrice: 50
+}
+
+var ownMiner = {
+    boolWoodMiner: false,
+    boolStoneMiner: false,
+    boolCoalMiner: false,
+    boolIronMiner: false,
+    boolGoldMiner: false,
+    boolDiamondMiner: false
+}
+
 main();
 
 function main() {
@@ -82,6 +109,100 @@ function main() {
 
     Buttons.diamondButton.addEventListener('click',
     mine.bind(this, ItemHealths.diamondHealth, ItemNames.diamond, MineTimes.diamondTime));
+
+    Buttons.woodMinerButton.addEventListener('click', function(){buyMiner(ItemNames.wood);});
+    Buttons.stoneMinerButton.addEventListener('click', function(){buyMiner(ItemNames.stone);});
+    Buttons.coalMinerButton.addEventListener('click', function(){buyMiner(ItemNames.coal);});
+    Buttons.ironMinerButton.addEventListener('click', function(){buyMiner(ItemNames.iron);});
+    Buttons.goldMinerButton.addEventListener('click', function(){buyMiner(ItemNames.gold);});
+    Buttons.diamondMinerButton.addEventListener('click', function(){buyMiner(ItemNames.diamond);});
+
+    //AutoClicker portion
+    setInterval(function(){
+        if(ownMiner.boolWoodMiner == true)
+            Buttons.woodButton.click();
+        if(ownMiner.boolStoneMiner == true)
+            Buttons.stoneButton.click();
+        if(ownMiner.boolCoalMiner == true)
+            Buttons.coalButton.click();
+        if(ownMiner.boolIronMiner == true)
+            Buttons.ironButton.click();
+        if(ownMiner.boolGoldMiner == true)
+            Buttons.goldButton.click();
+        if(ownMiner.boolDiamondMiner == true)
+            Buttons.diamondButton.click();
+    },1000)
+}
+
+//This function buys miners and subtracts the needed amount of resource from what user has
+//updates UI, changes background color to red
+function buyMiner(item){
+    var woodRequired = parseInt(MinerPrice.woodMinerPrice) - parseInt(User.userWood);
+    var stoneRequired = parseInt(MinerPrice.stoneMinerPrice) - parseInt(User.userStone);
+    var coalRequired = parseInt(MinerPrice.coalMinerPrice) - parseInt(User.userCoal);
+    var ironRequired = parseInt(MinerPrice.ironMinerPrice) - parseInt(User.userIron);
+    var goldRequired = parseInt(MinerPrice.goldMinerPrice) - parseInt(User.userGold);
+    var diamondRequired = parseInt(MinerPrice.diamondMinerPrice) - parseInt(User.userDiamond);
+
+    if(item == "wood"){ 
+        if(parseInt(User.userWood) >= parseInt(MinerPrice.woodMinerPrice)){
+            ownMiner.boolWoodMiner = true;
+            User.userWood -= MinerPrice.woodMinerPrice;
+            Buttons.woodMinerButton.disabled = true;
+            Buttons.woodMinerButton.style.backgroundColor = "red";
+            updateUI();
+        }else {alert("You need: " + woodRequired + " wood");}
+    }
+
+    if(item == "stone"){
+        if(parseInt(User.userStone) >= parseInt(MinerPrice.stoneMinerPrice)){
+            ownMiner.boolStoneMiner = true;
+            User.userStone -= MinerPrice.stoneMinerPrice;
+            Buttons.stoneMinerButton.disabled = true;
+            Buttons.stoneMinerButton.style.backgroundColor = "red";
+            updateUI();
+        }else{alert("You need: " + stoneRequired + " stone");}
+    }
+    
+    if(item == "coal"){
+        if(parseInt(User.userCoal) >= parseInt(MinerPrice.coalMinerPrice)){
+            ownMiner.boolCoalMiner = true;
+            User.userCoal -= MinerPrice.coalMinerPrice;
+            Buttons.coalMinerButton.disabled = true;
+            Buttons.coalMinerButton.style.backgroundColor = "red";
+            updateUI();
+        }else{alert("You need: " + coalRequired + " coal");}
+    }
+
+    if(item == "iron"){
+        if(parseInt(User.userIron) >= parseInt(MinerPrice.ironMinerPrice)){
+            ownMiner.boolIronMiner = true;
+            User.userIron -= MinerPrice.ironMinerPrice;
+            Buttons.ironMinerButton.disabled = true;
+            Buttons.ironMinerButton.style.backgroundColor = "red";
+            updateUI();
+        }else{alert("You need: " + ironRequired + " iron");}
+    }
+
+    if(item == "gold"){
+        if(parseInt(User.userGold) >= parseInt(MinerPrice.goldMinerPrice)){
+            ownMiner.boolGoldMiner = true;
+            User.userGold -= MinerPrice.goldMinerPrice;
+            Buttons.goldMinerButton.disabled = true;
+            Buttons.goldMinerButton.style.backgroundColor = "red";
+            updateUI();
+        }else{alert("You need: " + goldRequired + " gold");}
+    }
+    
+    if(item == "diamond"){
+        if(parseInt(User.userDiamond) >= parseInt(MinerPrice.diamondMinerPrice)){
+            ownMiner.boolDiamondMiner = true;
+            User.userDiamond -= MinerPrice.diamondMinerPrice;
+            Buttons.diamondMinerButton.disabled = true;
+            Buttons.diamondMinerButton.style.backgroundColor = "red";
+            updateUI();
+        }else{alert("You need: " + diamondRequired + " diamond");}
+    }
 }
 
 function mine(health, item, time) {

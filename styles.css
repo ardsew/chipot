@@ -66,3 +66,44 @@ img{
 #diamond-progress-bar{
     background-color: #7CE0E0;
 }
+
+table {
+    width:100%;
+}
+td {
+    width:33.3%;
+    position:relative;
+    border: 5px solid #C6C6C6;
+}
+td:after{
+    content:'';
+    display:block;
+    margin-top:100%;
+}
+td .content {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: #8A8A8A;
+    box-shadow: inset 2px 2px 0px 0px #000000, inset 0px 0px 2px 2px #FFFFFF;
+}
+
+td .tool {
+    position:absolute;
+    width:100px;
+    height:100px;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: #8A8A8A;
+    box-shadow: inset 2px 2px 0px 0px #000000, inset 0px 0px 2px 2px #FFFFFF;
+}
+
+.col-md-3#crafting-table {
+    background-color: #C6C6C6;
+    border-radius: 15px;
+    box-shadow: 5px 5px #888888;
+}

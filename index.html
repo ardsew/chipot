@@ -299,56 +299,69 @@
 <script>
     $('#wood-button').click(function(){
         $('#wood-button').attr('disabled','disabled');
-        $('#wood-progress-bar').animate({width:'100%'}, 1, 'linear');
+        $('#wood-progress-bar').animate({width:'100%'}, 100, 'linear');
         setTimeout(function() {
-            $('#wood-button').removeAttr('disabled');
-            $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');
-        }, 1000);
+            $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            setTimeout(function(){  
+                $('#wood-button').removeAttr('disabled');
+            }, 700);
+        }, 700);
     });
 
     $('#stone-button').click(function(){
         $('#stone-button').attr('disabled','disabled');
-        setTimeout(function() {
-            $('#stone-button').removeAttr('disabled');
-            $('#stone-progress-bar').animate({width:'0%'}, 100, 'swing');
-        }, 3000);
         $('#stone-progress-bar').animate({width:'100%'}, 2000, 'linear');
+        var onComplete = function(){ console.log("here"); }
+        setTimeout(function() {
+            $('#stone-progress-bar').animate( { width: '0%'}, { duration: 100, easing: 'linear'});
+            setTimeout(function(){  
+                $('#stone-button').removeAttr('disabled');
+            }, 700);
+        }, 3000);
     });
 
     $('#coal-button').click(function(){
         $('#coal-button').attr('disabled','disabled');
-        setTimeout(function() {
-            $('#coal-button').removeAttr('disabled');
-            $('#coal-progress-bar').animate({width:'0%'}, 100, 'swing');
-        }, 5000);
         $('#coal-progress-bar').animate({width:'100%'}, 4000, 'linear');
+        setTimeout(function() {
+            $('#coal-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            setTimeout(function(){  
+                $('#coal-button').removeAttr('disabled');
+            }, 700);
+        }, 5000);
     });
 
     $('#iron-button').click(function(){
         $('#iron-button').attr('disabled','disabled');
-        setTimeout(function() {
-            $('#iron-button').removeAttr('disabled');
-            $('#iron-progress-bar').animate({width:'0%'}, 100, 'swing');
-        }, 7000);
         $('#iron-progress-bar').animate({width:'100%'}, 6000, 'linear');
+        setTimeout(function() {
+            $('#iron-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            setTimeout(function(){  
+                $('#iron-button').removeAttr('disabled');
+            }, 700);
+        }, 7000);
     });
 
     $('#gold-button').click(function(){
         $('#gold-button').attr('disabled','disabled');
-        setTimeout(function() {
-            $('#gold-button').removeAttr('disabled');
-            $('#gold-progress-bar').animate({width:'0%'}, 100, 'swing');
-        }, 9000);
         $('#gold-progress-bar').animate({width:'100%'}, 8000, 'linear');
+        setTimeout(function() {
+            $('#gold-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            setTimeout(function(){  
+                $('#gold-button').removeAttr('disabled');
+            }, 700);
+        }, 9000);
     });
 
     $('#diamond-button').click(function(){
         $('#diamond-button').attr('disabled','disabled');
-        setTimeout(function() {
-            $('#diamond-button').removeAttr('disabled');
-            $('#diamond-progress-bar').animate({width:'0%'}, 100, 'swing');
-        }, 11000);
         $('#diamond-progress-bar').animate({width:'100%'}, 10000, 'linear');
+        setTimeout(function() {
+            $('#diamond-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            setTimeout(function(){  
+                $('#diamond-button').removeAttr('disabled');
+            }, 700);
+        }, 11000);
     });
 </script>
 

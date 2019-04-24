@@ -30,7 +30,14 @@ var Buttons = {
     coalMinerButton: document.getElementById('coal-miner-button'),
     ironMinerButton: document.getElementById('iron-miner-button'),
     goldMinerButton: document.getElementById('gold-miner-button'),
-    diamondMinerButton: document.getElementById('diamond-miner-button')
+    diamondMinerButton: document.getElementById('diamond-miner-button'),
+
+    woodAxeButton: document.getElementById('wood-axe-button'),
+    stoneAxeButton: document.getElementById('stone-axe-button'),
+    coalAxeButton: document.getElementById('coal-axe-button'),
+    ironAxeButton: document.getElementById('iron-axe-button'),
+    goldAxeButton: document.getElementById('gold-axe-button'),
+    diamondAxeButton: document.getElementById('diamond-axe-button')
 }
 
 var UIDisplay = {
@@ -72,12 +79,12 @@ var MineTimes = {
 // The price corresponds to that resource
 // Example: wood miner would require 800 wood
 var MinerPrice = {
-    woodMinerPrice: 200,
-    stoneMinerPrice: 150,
-    coalMinerPrice: 125,
-    ironMinerPrice: 100,
-    goldMinerPrice: 75,
-    diamondMinerPrice: 50
+    woodMinerPrice: 0,  //200
+    stoneMinerPrice: 0, //150
+    coalMinerPrice: 0,  //125
+    ironMinerPrice: 0,  //100
+    goldMinerPrice: 0,   //75
+    diamondMinerPrice: 0 //50
 }
 
 var ownMiner = {

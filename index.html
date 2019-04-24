@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<div>
+
     <!--
             <div id="user-info" class="container" style="width: 50%">
                 <div>
@@ -29,7 +29,6 @@
             </div>
     -->
 
-    <div>
     <div class="modal-body row">
 
         <div class="col-md-3">
@@ -45,7 +44,7 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <button class="btn btn-primary" id="wood-button" type="button"><img src="https://vignette.wikia.nocookie.net/minecraftpocketedition/images/5/55/Acacia_Wood.png/revision/latest?cb=20140318071948"></button>
+                        <button class="btn btn-primary" id="wood-button" type="button"><img class="blocks" src="https://vignette.wikia.nocookie.net/minecraftpocketedition/images/5/55/Acacia_Wood.png/revision/latest?cb=20140318071948"></button>
                     </div>
 
                     <div class="col-md-6">
@@ -66,11 +65,11 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <button class="btn btn-primary" id="stone-button" type="button"><img src="https://gamepedia.cursecdn.com/minecraft_gamepedia/1/17/Stone_TextureUpdate.png?version=24f75525684f684aca767e85af51a160"></button>
+                        <button class="btn btn-primary" id="stone-button" type="button"><img class="blocks" src="https://gamepedia.cursecdn.com/minecraft_gamepedia/1/17/Stone_TextureUpdate.png?version=24f75525684f684aca767e85af51a160"></button>
                     </div>
 
                     <div class="col-md-6">
-			<br>
+			            <br>
                         <h2><var id="stoneAmt">0</var></h2>
                     </div>
                 </div>
@@ -87,11 +86,11 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <button class="btn btn-primary" id="coal-button" type="button"><img src="https://gamepedia.cursecdn.com/minecraft_gamepedia/8/81/Block_of_Coal.png?version=e2f99400f0cb0e0c3af6b05870382bd5"></button>
+                        <button class="btn btn-primary" id="coal-button" type="button"><img class="blocks" src="https://gamepedia.cursecdn.com/minecraft_gamepedia/8/81/Block_of_Coal.png?version=e2f99400f0cb0e0c3af6b05870382bd5"></button>
                     </div>
-
+ 
                     <div class="col-md-6">
-			<br>
+			            <br>
                         <h2><var id="coalAmt">0</var></h2>
                     </div>
                 </div>
@@ -111,11 +110,11 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <button class="btn btn-primary" id="iron-button" type="button"><img src="http://www.minecraftopia.com/images/blocks/iron_block.png"></button>
+                        <button class="btn btn-primary" id="iron-button" type="button"><img class="blocks" src="http://www.minecraftopia.com/images/blocks/iron_block.png"></button>
                     </div>
 
                     <div class="col-md-6">
-			<br>
+			            <br>
                         <h2><var id="ironAmt">0</var></h2>
                     </div>
                 </div>
@@ -132,11 +131,11 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <button class="btn btn-primary" id="gold-button" type="button"><img src="http://vignette3.wikia.nocookie.net/lotrminecraftmod/images/1/17/GoldBlock.png/revision/latest?cb=20160604170118"></button>
+                        <button class="btn btn-primary" id="gold-button" type="button"><img class="blocks" src="http://vignette3.wikia.nocookie.net/lotrminecraftmod/images/1/17/GoldBlock.png/revision/latest?cb=20160604170118"></button>
                     </div>
 
                     <div class="col-md-6">
-			<br>
+			            <br>
                         <h2><var id="goldAmt">0</var></h2>
                     </div>
                 </div>
@@ -153,11 +152,11 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <button class="btn btn-primary" id="diamond-button"  type="button"><img src="https://vignette.wikia.nocookie.net/minecraft/images/4/40/Block_of_Diamond.png/revision/latest?cb=20111018170718"></button>
+                        <button class="btn btn-primary" id="diamond-button"  type="button"><img class="blocks" src="https://vignette.wikia.nocookie.net/minecraft/images/4/40/Block_of_Diamond.png/revision/latest?cb=20111018170718"></button>
                     </div>
 
                     <div class="col-md-6">
-			<br>
+			            <br>
                         <h2><var id="diamondAmt">0</var></h2>
                     </div>
                 </div>
@@ -165,26 +164,47 @@
         </div>
 
         <div class="col-md-3">
-            managers
-            <div id = "miner-buttons">
-                <button id="wood-miner-button" type = "button" class = "btn-secondary"><img src = "http://www.minecraftopia.com/images/blocks/wooden_pickaxe.png"></button>
-                <button id="iron-miner-button" type="button" class = "btn-secondary"><img src="http://www.minecraftopia.com/images/blocks/iron_pickaxe.png"></button>
+
+            <div class="col-md-6">
+
+                <div id = "miner-buttons">
+                    <button id="wood-miner-button" type = "button" class = "btn-secondary"><img class="miners" src ="./img/wood-miner.png"></button>
+                    <button id="stone-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/stone-miner.png"></button>
+                    <button id="coal-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/coal-miner.png"></button>
+                </div>
             </div>
-            <div id = "miner-buttons">
-                <button id="stone-miner-button" type="button" class = "btn-secondary"><img src="http://www.minecraftopia.com/images/blocks/stone_pickaxe.png"></button>
-                <button id="gold-miner-button" type="button" class = "btn-secondary"><img src="http://www.minecraftopia.com/images/blocks/gold_pickaxe.png"></button>
-                
-            </div>
-            <div id = "miner-buttons">
-                <button id="coal-miner-button" type="button" class = "btn-secondary"><img src="http://www.minecraftopia.com/images/blocks/iron_pickaxe.png"></button>
-                <button id="diamond-miner-button" type="button" class = "btn-secondary"><img src="http://www.minecraftopia.com/images/blocks/diamond_pickaxe.png"></button>
+
+            <div class="col-md-6">
+
+                <div id = "miner-buttons">
+                    <button id="iron-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/iron-miner.png"></button>
+                    <button id="gold-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/gold-miner.png"></button>
+                    <button id="diamond-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/diamond-miner.png"></button>
+                </div>
             </div>
         </div>
 
+        
         <div class="col-md-3">
-            tools
-        </div>
 
+                <div class="col-md-6">
+    
+                    <div id = "miner-buttons">
+                        <button id="wood-axe-button" type = "button" class = "btn-secondary"><img class="tools" src = "./img/wooden-pickaxe.png"></button>
+                        <button id="stone-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/stone-pickaxe.png"></button>
+                        <button id="coal-miner-button" type="button" class = "btn-secondary"><img class="tools" src="./img/purple-pickaxe.jpg"></button>
+                    </div>
+                </div>
+    
+                <div class="col-md-6">
+    
+                    <div id = "miner-buttons">
+                        <button id="iron-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/iron-pickaxe.png"></button>
+                        <button id="gold-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/gold-pickaxe.png"></button>
+                        <button id="diamond-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/diamond-pickaxe.png"></button>
+                    </div>
+                </div>
+        </div>
     </div>
 
     <div class="modal-body row">

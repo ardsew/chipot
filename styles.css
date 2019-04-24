@@ -34,15 +34,27 @@
   border-color: white;
 }
 
-.btn.btn-primary:disabled:not(:hover){
+.btn-secondary{
   background-color: transparent;
   border-color: white;
+  margin-bottom: 25px;
 }
 
-img{
+.blocks{
   width: 100px;
   height: 100px;
 }
+
+.tools{
+  width: 220px;
+  height: 220px;
+}
+
+.miners{
+  width: 220px;
+  height: 220px;
+}
+
 #wood-progress-bar{
     background-color: #765D27;
 }

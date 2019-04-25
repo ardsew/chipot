@@ -252,19 +252,14 @@
 <script src="app.js"></script>
 <script>
     $('#wood-button').click(function(){
-        var time = $('#woodTime').text();
-        time = Number(time);
-        var t1, t2;
-        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
-        t2 = (t1 == 100)?(700):(time*1000);
-        $('#wood-button').attr('disabled','disabled');
-        $('#wood-progress-bar').animate({width:'100%'}, t1, 'linear');
+        $('#wood-button').attr('enabled','enabled');
+        $('#wood-progress-bar').animate({width:'100%'}, 100, 'linear');
         setTimeout(function() {
-            $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
-            setTimeout(function(){  
-                $('#wood-button').removeAttr('disabled');
-            }, 700);
-        }, t2);
+            // $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            // setTimeout(function(){  
+            //     $('#wood-button').removeAttr('disabled');
+            // }, 700);
+        }, 700);
     });
 
     $('#stone-button').click(function(){

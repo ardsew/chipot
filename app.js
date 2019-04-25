@@ -393,22 +393,22 @@ function mine(health, item, time) {
 
 function addItemToUser(item) {
     if (item == 'wood') {
-        User.userWood += 1;
+        User.userWood += wood_counter;
         wood_counter++;
     } else if (item == 'stone') {
-        User.userStone+= 1;
+        User.userStone+= stone_counter;
         stone_counter++;
     } else if (item =='coal') {
-        User.userCoal+= 1;
+        User.userCoal+= coal_counter;
         coal_counter++;
     } else if (item =='iron') {
-        User.userIron+= 1;
+        User.userIron+= iron_counter;
         iron_counter++;
     } else if(item == 'gold') {
-        User.userGold+= 1;
+        User.userGold+= gold_counter;
         gold_counter++;
     } else if (item == 'diamond') {
-        User.userDiamond+= 1;
+        User.userDiamond+= diamond_counter;
         diamond_counter++;
     }
 }

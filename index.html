@@ -4,39 +4,32 @@
 
 <head>
     <title>Minecraft Idle Clicker</title>
-
     <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
     <script src="jquery-3.4.0.min.js"></script>
+<<<<<<< HEAD
     <script src="numscroller-1.0.js"></script>
+=======
+    <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
 </head>
+
 <body>
-
-    <!--
-            <div id="user-info" class="container" style="width: 50%">
-                <div>
-                   <h2>Coal: <var id="coalAmt">0</var></h2>
-                </div>
-            </div>
-
-
-            <div id="user-info" class="container" style="width: 50%">
-                <div>
-                    <h2>Iron: <var id="ironAmt">0</var></h2>
-                    <h2>Gold: <var id="goldAmt">0</var></h2>
-                    <h2>Diamond: <var id="diamondAmt">0</var></h2>
-                </div>
-            </div>
-    -->
-
+<div class="container-fluid">
+    <div class="jumbotron">
     <div class="modal-body row">
-
         <div class="col-md-3">
 
             <div class="container" style="width: 100%">
+<<<<<<< HEAD
 
                 <h4><var id="woodTime">0</var> Seconds: Wood</h4>
+=======
+                <h4><var id="woodMineTime">0</var> Seconds: Wood</h4>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="wood-progress-bar" role="progressbar" style="width:0%"></div>
@@ -51,60 +44,79 @@
                     <div class="col-md-6">
                         <br>
                         <h2>
+<<<<<<< HEAD
                             <span id='numscroller-wood' data-min='0' data-max='0' data-delay='0' data-increment='1'>
                                         <var id="woodAmt">0</var>
                             </span>
+=======
+                            <span class='odometer' id="woodAmt">0</span>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                         </h2>
                     </div>
                 </div>
             </div>
 
             <div class="container" style="width: 100%">
+<<<<<<< HEAD
 
                 <h4><var id="stoneTime">0</var> Seconds: Stone</h4>
+=======
+                <h4><var id="stoneMineTime">0</var> Seconds: Stone</h4>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar progress-bar-striped" id="stone-progress-bar" role="progressbar" style="width: 0%"></div>
                 </div>
 
                 <div class="row">
-
                     <div class="col-md-6">
                         <button class="btn btn-primary" id="stone-button" type="button"><img class="blocks" src="./img/stone.png"></button>
                     </div>
 
                     <div class="col-md-6">
+<<<<<<< HEAD
                         <br>
                         <h2>
                             <span id='numscroller-stone' data-min='0' data-max='0' data-delay='0' data-increment='1'>
                                 <var id="stoneAmt">0</var>
                             </span>
                         </h2>
+=======
+			            <br>
+                        <h2><span class='odometer' id="stoneAmt">0</span></h2>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                     </div>
                 </div>
             </div>
 
             <div class="container" style="width: 100%">
+<<<<<<< HEAD
 
                 <h4><var id="coalTime">0</var> Seconds: Coal</h4>
+=======
+                <h4><var id="coalMineTime">0</var> Seconds: Coal</h4>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="coal-progress-bar" role="progressbar" style="width: 0%"></div>
                 </div>
 
                 <div class="row">
-
                     <div class="col-md-6">
                         <button class="btn btn-primary" id="coal-button" type="button"><img class="blocks" src="./img/coal.png"></button>
                     </div>
  
                     <div class="col-md-6">
 			            <br>
+<<<<<<< HEAD
                         <h2>
                             <span id='numscroller-coal' data-min='0' data-max='0' data-delay='0' data-increment='1'>
                                 <var id="coalAmt">0</var>
                             </span>
                         </h2>
+=======
+                        <h2><span class='odometer' id="coalAmt">0</span></h2>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                     </div>
                 </div>
             </div>
@@ -113,33 +125,45 @@
         <div class="col-md-3">
 
             <div class="container" style="width: 100%">
+<<<<<<< HEAD
 
                 <h4><var id="ironTime">0</var> Seconds: Iron</h4>
+=======
+                <h4><var id="ironMineTime">0</var> Seconds: Iron</h4>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="iron-progress-bar" role="progressbar" style="width: 0%"></div>
                 </div>
 
                 <div class="row">
-
                     <div class="col-md-6">
                         <button class="btn btn-primary" id="iron-button" type="button"><img class="blocks" src="./img/iron.png"></button>
                     </div>
 
                     <div class="col-md-6">
+<<<<<<< HEAD
                         <br>
                         <h2>
                             <span id='numscroller-iron' data-min='0' data-max='0' data-delay='0' data-increment='1'>
                                 <var id="ironAmt">0</var>
                             </span>
                         </h2>
+=======
+			            <br>
+                        <h2><span class='odometer' id="ironAmt">0</span></h2>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                     </div>
                 </div>
             </div>
 
             <div class="container" style="width: 100%">
+<<<<<<< HEAD
 
                 <h4><var id="goldTime">0</var> Seconds: Gold</h4>
+=======
+                <h4><var id="goldMineTime">0</var> Seconds: Gold</h4>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="gold-progress-bar" role="progressbar" style="width: 0%"></div>
@@ -153,71 +177,84 @@
 
                     <div class="col-md-6">
 			            <br>
+<<<<<<< HEAD
                         <h2>
                             <span id='numscroller-gold' data-min='0' data-max='0' data-delay='0' data-increment='1'>
                                 <var id="goldAmt">0</var>
                             </span>
                         </h2>
+=======
+                        <h2><span class='odometer' id="goldAmt">0</span></h2>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                     </div>
                 </div>
             </div>
 
             <div class="container" style="width: 100%">
+<<<<<<< HEAD
 
                 <h4><var id="diamondTime">0</var> Seconds: Diamond</h4>
+=======
+                <h4><var id="diamondMineTime">0</var> Seconds: Diamond</h4>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="diamond-progress-bar" role="progressbar" style="width: 0%"></div>
                 </div>
 
                 <div class="row">
-
                     <div class="col-md-6">
                         <button class="btn btn-primary" id="diamond-button"  type="button"><img class="blocks" src="./img/diamond.png"></button>
                     </div>
 
                     <div class="col-md-6">
 			            <br>
+<<<<<<< HEAD
                         <h2>
                             <span id='numscroller-diamond' data-min='0' data-max='0' data-delay='0' data-increment='1'>
                                 <var id="diamondAmt">0</var>
                             </span>
                         </h2>
+=======
+                        <h2><span class='odometer' id="diamondAmt">0</span></h2>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-3">
-
             <div class="col-md-6">
 
                 <div id = "miner-buttons">
-                    <button id="wood-miner-button" type = "button" class = "btn-secondary"><img class="miners" src ="./img/wood-miner.png"></button>
-                    <button id="stone-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/stone-miner.png"></button>
+                    <button id="wood-miner-button" type = "button" class = "btn-secondary"><img class="miners" src ="./img/wood-miner.jpg"></button>
+                    <button id="stone-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/stone-miner.jpeg"></button>
                     <button id="coal-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/coal-miner.png"></button>
                 </div>
+
             </div>
-
             <div class="col-md-6">
-
                 <div id = "miner-buttons">
-                    <button id="iron-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/iron-miner.png"></button>
-                    <button id="gold-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/gold-miner.png"></button>
-                    <button id="diamond-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/diamond-miner.png"></button>
+                    <button id="iron-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/iron-miner.jpg"></button>
+                    <button id="gold-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/gold-miner.jpg"></button>
+                    <button id="diamond-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/diamond-miner.ico"></button>
                 </div>
             </div>
         </div>
 
-        
         <div class="col-md-3">
-
                 <div class="col-md-6">
     
                     <div id = "miner-buttons">
+<<<<<<< HEAD
                         <button id="wood-axe-button" type = "button" class = "btn-secondary"><img class="tools" src = "./img/wood-axe.png"></button>
                         <button id="stone-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/stone-axe.png"></button>
                         <button id="purple-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/purple-axe.png"></button>
+=======
+                        <button id="wood-axe-button" type = "button" class = "btn-secondary"><img class="tools" src = "./img/wood-pickaxe.png"></button>
+                        <button id="stone-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/stone-pickaxe.jpg"></button>
+                        <button id="purple-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/purple-pickaxe.jpg"></button>
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
                     </div>
                 </div>
     
@@ -233,7 +270,7 @@
     </div>
 
     <div class="modal-body row">
-
+<!-- 
         <div class="col-md-3">
                 tools
         </div>
@@ -245,7 +282,7 @@
         <div class="col-md-3">
                 tools
         </div>
-
+ -->
         <div class="col-md-3" id="crafting-table">
             <div class="container" style="width: 100%">
                 <div class="col-md-8">
@@ -297,7 +334,7 @@
                     <br>
                     <br>
                     <br>
-                    <img src="arrow.png" style="width:50px; height:50px; position:relative; right:25px; top:20px;">
+                    <img src="./img/arrow.png" style="width:50px; height:50px; position:relative; right:25px; top:20px;">
                 </div>
 
                 <div class="col-md-3">
@@ -316,7 +353,6 @@
                 </div>
         </div>
         </div>
-
     </div>
 
     <div id="prompt-window">
@@ -332,11 +368,14 @@
             <div id="button-col"> </div>
         </div>
     </div>
+    </div>
+</div>
 </body>
 
 <script src="app.js"></script>
 <script>
     $('#wood-button').click(function(){
+<<<<<<< HEAD
         var time = $('#woodTime').text();
         time = Number(time);
         var t1, t2;
@@ -350,6 +389,16 @@
                 $('#wood-button').removeAttr('disabled');
             }, 700);
         }, t2);
+=======
+        $('#wood-button').attr('enabled','enabled');
+        $('#wood-progress-bar').animate({width:'100%'}, 100, 'linear');
+        setTimeout(function() {
+            // $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            // setTimeout(function(){  
+            //     $('#wood-button').removeAttr('disabled');
+            // }, 700);
+        }, 700);
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
     });
 
     $('#stone-button').click(function(){

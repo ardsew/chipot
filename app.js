@@ -1,4 +1,10 @@
 var width = 0;
+var wood_counter = 1;
+var stone_counter = 1;
+var coal_counter = 1;
+var diamond_counter = 1;
+var gold_counter = 1;
+var iron_counter = 1;
 
 var User = {
     userWood: 0,
@@ -8,6 +14,10 @@ var User = {
     userGold: 0,
     userDiamond: 0
 }
+
+setTimeout(function(){
+    odometer.innerHTML = 456;
+}, 1000);
 
 var Progressbars = {
     stonePB: document.getElementById('stone-progress-bar'),
@@ -296,24 +306,30 @@ function buyMiner(item){
 
 function mine(health, item, time) {
     setTimeout(function() {
-                addItemToUser(item);
-                updateUI();
+        addItemToUser(item);
+        updateUI();
     }, time)
 }
 
 function addItemToUser(item) {
     if (item == 'wood') {
-        User.userWood += 4;
+        User.userWood += wood_counter;
+        wood_counter++;
     } else if (item == 'stone') {
-        User.userStone++;
+        User.userStone+= stone_counter;
+        stone_counter++;
     } else if (item =='coal') {
-        User.userCoal++;
+        User.userCoal+= coal_counter;
+        coal_counter++;
     } else if (item =='iron') {
-        User.userIron++;
+        User.userIron+= iron_counter;
+        iron_counter++;
     } else if(item == 'gold') {
-        User.userGold++;
+        User.userGold+= gold_counter;
+        gold_counter++;
     } else if (item == 'diamond') {
-        User.userDiamond++;
+        User.userDiamond+= diamond_counter;
+        diamond_counter++;
     }
 }
 
@@ -421,7 +437,8 @@ function promptMaterialAccount(type, item){
     var i = 0;
     for(var material in list){
         i++;
-        prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + "  " + list[material] + "<br>";
+        prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" 
+        + "  " + list[material] + "<br>";
     }
     prompt += "</p>";
     document.getElementById('prompt-col1').innerHTML = prompt;
@@ -431,15 +448,18 @@ function promptMaterialAccount(type, item){
     var buy = true;
     for(var material in list){
         if(User["user"+ capitalize(material.toString())] < list[material]){
-            prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + " <span style='color:red'> " + User["user"+ capitalize(material.toString())] + "</span><br>";
+            prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + 
+            " <span style='color:red'> " + User["user"+ capitalize(material.toString())] + "</span><br>";
             buy = false;
         }
         else{
-            prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + " <span style='color:green'> " + User["user"+ capitalize(material.toString())] + "</span><br>";
+            prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + 
+            " <span style='color:green'> " + User["user"+ capitalize(material.toString())] + "</span><br>";
         }
     }
     prompt += "</p>";
     document.getElementById('prompt-col2').innerHTML = prompt;
+<<<<<<< HEAD
 
     document.getElementById('prompt-col1').className = 'col-md-6';
     document.getElementById('prompt-col2').className = 'col-md-6';
@@ -455,6 +475,10 @@ function promptMaterialAccount(type, item){
         document.getElementById('button-col2').style.display = "inline";
     }
     else{
+=======
+    if(buy){
+    }{
+>>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
         document.getElementById('button-col').className = "col-md-12";
         document.getElementById('button-col').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
         document.getElementById('button-col').style.display = "inline";

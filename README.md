@@ -6,4 +6,4 @@ Jerry
 Tarik  
 Saij   
   
-Presentation: https://docs.google.com/document/d/1e4W13Hb9RKDINuf516kvs-w91PCy9H2BNiU1vAB2BMI/edit?usp=sharing
+Presentation: https://docs.google.com/presentation/d/1un5wZJRWWlMHG4qjEKC0keq-1aKaDT3iJgdnRMULjr0/edit#slide=id.p

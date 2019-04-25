@@ -35,6 +35,15 @@ var UserMineTimes = {
     diamondTime: 11000
 }
 
+var UserMineTimes1 = {
+    woodTime: 0,
+    stoneTime: 3000,
+    coalTime: 5000,
+    ironTime: 7000,
+    goldTime: 9000,
+    diamondTime: 11000
+}
+
 var WoodMineTimes = {
     woodTime: 0,
     stoneTime: 2000,
@@ -110,12 +119,21 @@ var useMiner = {
 }
 
 var costMiner = {
-    woodMiner: {coal: 1, wood: 1}, //5 20
-    stoneMiner: {coal: 10, wood: 40, stone: 2}, //10 40 20
-    coalMiner: {coal: 100, wood: 400, gold: 50, diamond: 10},
-    ironMiner: {coal: 50, wood: 100, stone:20, iron: 20},
-    goldMiner: {coal: 100, wood: 400, gold: 50},
-    diamondMiner: {coal: 500, wood: 2000, diamond: 50}
+    woodMiner: {wood: 2},
+    stoneMiner: {stone: 2},
+    coalMiner: {coal: 2},
+    ironMiner: {iron: 2},
+    goldMiner: {gold: 2},
+    diamondMiner: {diamond: 2}
+}
+
+var costMiner1 = {
+    woodMiner: {wood: 60, stone: 50, coal: 40, iron: 30, gold: 20, diamond: 10},
+    stoneMiner: {wood: 80, stone: 70, coal: 60, iron: 50, gold: 40, diamond: 30},
+    coalMiner: {wood: 110, stone: 100, coal: 90, iron: 80, gold: 70, diamond: 60},
+    ironMiner: {wood: 150, stone: 140, coal: 130, iron: 120, gold: 110, diamond: 100},
+    goldMiner: {wood: 200, stone: 190, coal: 180, iron: 170, gold: 160, diamond: 150},
+    diamondMiner: {wood: 260, stone: 250, coal: 240, iron: 230, gold: 220, diamond: 210}
 }
 
 var ownAxe = {
@@ -128,8 +146,17 @@ var ownAxe = {
 }
 
 var costAxe = {
-    woodAxe: {coal: 1, wood: 1}, //5 20
-    stoneAxe: {coal: 10, wood: 40, stone: 2}, //10 40 20
+    woodAxe: {coal: 1, wood: 1},
+    stoneAxe: {coal: 1, stone: 1}, 
+    purpleAxe: {coal: 1, gold: 1, diamond: 1},
+    ironAxe: {coal: 1, stone:1, iron: 1},
+    goldAxe: {coal: 1, gold: 1},
+    diamondAxe: {coal: 1, diamond: 1}
+}
+
+var costAxe1 = {
+    woodAxe: {coal: 5, wood: 20},
+    stoneAxe: {coal: 10, wood: 40, stone: 20}, 
     purpleAxe: {coal: 100, wood: 400, gold: 50, diamond: 10},
     ironAxe: {coal: 50, wood: 100, stone:20, iron: 20},
     goldAxe: {coal: 100, wood: 400, gold: 50},
@@ -246,7 +273,51 @@ function main() {
             Buttons.diamondButton.click();
     },1000)
 
+    for(var button in Buttons){
+        Buttons[button].setAttribute("disabled", true);
+    }
+    Buttons.woodButton.removeAttribute("disabled");
+    setInterval(function(){
+        unlockItems();
+    }, 1000);
+
     setMineTimes("User");
+}
+
+function unlockItems(){
+    if(User.userWood > 5){
+        Buttons.stoneButton.removeAttribute("disabled");
+    }
+    if(User.userStone > 0){
+        Buttons.coalButton.removeAttribute("disabled");
+        Buttons.woodMinerButton.removeAttribute("disabled");
+    }
+    if(User.userCoal > 0){
+        Buttons.ironButton.removeAttribute("disabled");
+        Buttons.stoneMinerButton.removeAttribute("disabled");
+        Buttons.woodAxeButton.removeAttribute("disabled");
+    }
+    if(User.userIron > 0){
+        Buttons.goldButton.removeAttribute("disabled");
+        Buttons.coalMinerButton.removeAttribute("disabled");
+        Buttons.ironMinerButton.removeAttribute("disabled");
+        Buttons.stoneAxeButton.removeAttribute("disabled");
+    }
+    if(User.userGold > 0){
+        Buttons.diamondButton.removeAttribute("disabled");
+        Buttons.goldMinerButton.removeAttribute("disabled");
+        Buttons.purpleAxeButton.removeAttribute("disabled");
+    }
+    if(User.userDiamond > 0){
+        Buttons.diamondMinerButton.removeAttribute("disabled");
+        Buttons.ironAxeButton.removeAttribute("disabled");
+    }
+    if(ownMiner.woodMiner == true){
+        Buttons.goldAxeButton.removeAttribute("disabled");
+    }
+    if(ownMiner.stoneMiner == true){
+        Buttons.diamondAxeButton.removeAttribute("disabled");
+    }
 }
 
 function mine(health, item, time) {
@@ -255,6 +326,8 @@ function mine(health, item, time) {
         updateUI();
     }, time)
 }
+
+
 
 function addItemToUser(item) {
     if (item == 'wood') {
@@ -333,7 +406,7 @@ function clickAxe(item){
     if(promptWindowOpen == true){
         exitPrompt();
     }
-    promptCurrent = item;
+    promptCurrent = item + "Axe";
     if(ownAxe[item + "Axe"] == false){
         document.getElementById('prompt-title').innerHTML = "Buy " + item + " pickaxe";
         promptMaterialAccount("Axe", item);
@@ -345,7 +418,8 @@ function clickAxe(item){
         document.getElementById('prompt-window').style.display = "inline";
     }
     setTimeout(function(){
-        if(promptWindowOpen && item == promptCurrent){
+        if(promptWindowOpen && item + "Axe" == promptCurrent){
+            console.log(promptCurrent);
             clickAxe(item);
         }
     }, 1000);
@@ -357,7 +431,7 @@ function clickMiner(item){
     if(promptWindowOpen == true){
         exitPrompt();
     }
-    promptCurrent = item;
+    promptCurrent = item + "Miner";
     if(ownMiner[item + "Miner"] == false){
         document.getElementById('prompt-title').innerHTML = "Buy " + item + " miner";
         promptMaterialAccount("Miner", item);
@@ -369,7 +443,8 @@ function clickMiner(item){
         document.getElementById('prompt-window').style.display = "inline";
     }
     setTimeout(function(){
-        if(promptWindowOpen && item == promptCurrent){
+        if(promptWindowOpen && item + "Miner" == promptCurrent){
+            console.log(promptCurrent);
             clickMiner(item);
         }
     }, 1000);
@@ -471,6 +546,7 @@ function buyItem(){
         User["user"+ capitalize(material.toString())] -= list[material];
     }
     eval("own" + capitalize(type))[item + type] = true;
+    updateUI();
     exitPrompt();
 }
 

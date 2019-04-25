@@ -322,7 +322,7 @@ function main() {
     },1000)
 
     for(var button in Buttons){
-        Buttons[button].setAttribute("enabled", true);
+        Buttons[button].setAttribute("disabled", true);
     }
 
     Buttons.woodButton.removeAttribute("disabled");

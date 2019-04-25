@@ -293,7 +293,7 @@ function main() {
         else{
             return;
         }
-    }, 500);
+    }, 1000);
 
     setMineTimes("User");
 }

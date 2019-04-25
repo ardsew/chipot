@@ -206,6 +206,13 @@ td .tool {
   height: 50px;
 }
 
+#prompt-use-img{  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
 #prompt-text{
   padding: 5px;
   font: 40px arial, sans-serif;
@@ -222,6 +229,7 @@ td .tool {
   margin: 0px 8px;
   padding: 8px 20px;
   background: #C2AE8F;
+  width: 50%;
   cursor: pointer;
   font: 30px arial, sans-serif;
   text-align: center;

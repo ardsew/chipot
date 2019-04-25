@@ -52,7 +52,8 @@
         <div class="col-md-3">
 
             <div class="container" style="width: 100%">
-                <h4><var id="woodMineTime">0</var> Seconds: Wood</h4>
+
+                <h4><var id="woodTime">0</var> Seconds: Wood</h4>
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="wood-progress-bar" role="progressbar" style="width:0%"></div>
@@ -74,7 +75,8 @@
             </div>
 
             <div class="container" style="width: 100%">
-                <h4><var id="stoneMineTime">0</var> Seconds: Stone</h4>
+
+                <h4><var id="stoneTime">0</var> Seconds: Stone</h4>
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar progress-bar-striped" id="stone-progress-bar" role="progressbar" style="width: 0%"></div>
@@ -93,7 +95,8 @@
             </div>
 
             <div class="container" style="width: 100%">
-                <h4><var id="coalMineTime">0</var> Seconds: Coal</h4>
+
+                <h4><var id="coalTime">0</var> Seconds: Coal</h4>
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="coal-progress-bar" role="progressbar" style="width: 0%"></div>
@@ -115,7 +118,7 @@
         <div class="col-md-3">
 
             <div class="container" style="width: 100%">
-                <h4><var id="ironMineTime">0</var> Seconds: Iron</h4>
+                <h4><var id="ironTime">0</var> Seconds: Iron</h4>
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="iron-progress-bar" role="progressbar" style="width: 0%"></div>
@@ -134,7 +137,7 @@
             </div>
 
             <div class="container" style="width: 100%">
-                <h4><var id="goldMineTime">0</var> Seconds: Gold</h4>
+                <h4><var id="goldTime">0</var> Seconds: Gold</h4>
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="gold-progress-bar" role="progressbar" style="width: 0%"></div>
@@ -154,7 +157,7 @@
             </div>
 
             <div class="container" style="width: 100%">
-                <h4><var id="diamondMineTime">0</var> Seconds: Diamond</h4>
+                <h4><var id="diamondTime">0</var> Seconds: Diamond</h4>
 
                 <div class="progress">
                     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped" id="diamond-progress-bar" role="progressbar" style="width: 0%"></div>
@@ -196,18 +199,18 @@
                 <div class="col-md-6">
     
                     <div id = "miner-buttons">
-                        <button id="wood-axe-button" type = "button" class = "btn-secondary"><img class="tools" src = "./img/wood-pickaxe.png"></button>
-                        <button id="stone-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/stone-pickaxe.jpg"></button>
-                        <button id="purple-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/purple-pickaxe.jpg"></button>
+                        <button id="wood-axe-button" type = "button" class = "btn-secondary"><img class="tools" src = "./img/wood-axe.png"></button>
+                        <button id="stone-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/stone-axe.png"></button>
+                        <button id="purple-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/purple-axe.png"></button>
                     </div>
                 </div>
     
                 <div class="col-md-6">
     
                     <div id = "miner-buttons">
-                        <button id="iron-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/iron-pickaxe.png"></button>
-                        <button id="gold-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/gold-pickaxe.png"></button>
-                        <button id="diamond-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/diamond-pickaxe.png"></button>
+                        <button id="iron-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/iron-axe.png"></button>
+                        <button id="gold-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/gold-axe.png"></button>
+                        <button id="diamond-axe-button" type="button" class = "btn-secondary"><img class="tools" src="./img/diamond-axe.png"></button>
                     </div>
                 </div>
         </div>
@@ -290,8 +293,9 @@
     <div id="prompt-window">
         <h1 id="prompt-title"></h1>
         <div id="prompt">
-            <div id="prompt-col1" class="col-md-6"> </div>
-            <div id="prompt-col2" class="col-md-6"> </div>
+            <div id="prompt-col1"> </div>
+            <div id="prompt-col2"> </div>
+            <div id="prompt-col"> </div>
         </div>
         <div id="options">
             <div id="button-col1"> </div>
@@ -306,87 +310,121 @@
 <script src="app.js"></script>
 <script>
     $('#wood-button').click(function(){
-        $('#wood-button').attr('enabled','enabled');
-        $('#wood-progress-bar').animate({width:'100%'}, 100, 'linear');
+        var time = $('#woodTime').text();
+        time = Number(time);
+        var t1, t2;
+        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
+        t2 = (t1 == 100)?(700):(time*1000);
+        $('#wood-button').attr('disabled','disabled');
+        $('#wood-progress-bar').animate({width:'100%'}, t1, 'linear');
         setTimeout(function() {
-            // $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
-            // setTimeout(function(){  
-            //     $('#wood-button').removeAttr('disabled');
-            // }, 700);
-        }, 700);
+            $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            setTimeout(function(){  
+                $('#wood-button').removeAttr('disabled');
+            }, 700);
+        }, t2);
     });
 
     $('#stone-button').click(function(){
+        var time = $('#stoneTime').text();
+        time = Number(time);
+        var t1, t2;
+        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
+        t2 = (t1 == 100)?(700):(time*1000);
         $('#stone-button').attr('disabled','disabled');
-        $('#stone-progress-bar').animate({width:'100%'}, 2000, 'linear');
+        $('#stone-progress-bar').animate({width:'100%'}, t1, 'linear');
         var onComplete = function(){ console.log("here"); }
         setTimeout(function() {
             $('#stone-progress-bar').animate( { width: '0%'}, { duration: 100, easing: 'linear'});
             setTimeout(function(){  
                 $('#stone-button').removeAttr('disabled');
             }, 700);
-        }, 3000);
+        }, t2);
     });
     var stone_btn = $("#stone-button");
     stone_btn.prop("disabled", true);
 
     $('#coal-button').click(function(){
+        var time = $('#coalTime').text();
+        time = Number(time);
+        var t1, t2;
+        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
+        t2 = (t1 == 100)?(700):(time*1000);
         $('#coal-button').attr('disabled','disabled');
-        $('#coal-progress-bar').animate({width:'100%'}, 4000, 'linear');
+        $('#coal-progress-bar').animate({width:'100%'}, t1, 'linear');
         setTimeout(function() {
             $('#coal-progress-bar').animate({width:'0%'}, 100, 'swing');            
             setTimeout(function(){  
                 $('#coal-button').removeAttr('disabled');
             }, 700);
-        }, 5000);
+        }, t2);
     });
 
     var coal_btn = $("#coal-button");
     coal_btn.prop("disabled", true);
 
     $('#iron-button').click(function(){
+        var time = $('#ironTime').text();
+        time = Number(time);
+        var t1, t2;
+        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
+        t2 = (t1 == 100)?(700):(time*1000);
         $('#iron-button').attr('disabled','disabled');
-        $('#iron-progress-bar').animate({width:'100%'}, 6000, 'linear');
+        $('#iron-progress-bar').animate({width:'100%'}, t1, 'linear');
         setTimeout(function() {
             $('#iron-progress-bar').animate({width:'0%'}, 100, 'swing');            
             setTimeout(function(){  
                 $('#iron-button').removeAttr('disabled');
             }, 700);
-        }, 7000);
+        }, t2);
     });
 
     var iron_btn = $("#iron-button");
     iron_btn.prop("disabled", true);
 
     $('#gold-button').click(function(){
+        var time = $('#goldTime').text();
+        time = Number(time);
+        var t1, t2;
+        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
+        t2 = (t1 == 100)?(700):(time*1000);
         $('#gold-button').attr('disabled','disabled');
-        $('#gold-progress-bar').animate({width:'100%'}, 8000, 'linear');
+        $('#gold-progress-bar').animate({width:'100%'}, t1, 'linear');
         setTimeout(function() {
             $('#gold-progress-bar').animate({width:'0%'}, 100, 'swing');            
             setTimeout(function(){  
                 $('#gold-button').removeAttr('disabled');
             }, 700);
-        }, 9000);
+        }, t2);
     });
 
     var gold_btn = $("#gold-button");
     gold_btn.prop("disabled", true);
 
     $('#diamond-button').click(function(){
+        var time = $('#diamondTime').text();
+        time = Number(time);
+        var t1, t2;
+        t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
+        t2 = (t1 == 100)?(700):(time*1000);
         $('#diamond-button').attr('disabled','disabled');
-        $('#diamond-progress-bar').animate({width:'100%'}, 10000, 'linear');
+        $('#diamond-progress-bar').animate({width:'100%'}, t1, 'linear');
         setTimeout(function() {
             $('#diamond-progress-bar').animate({width:'0%'}, 100, 'swing');            
             setTimeout(function(){  
                 $('#diamond-button').removeAttr('disabled');
             }, 700);
-        }, 11000);
+        }, t2);
     });
 
+<<<<<<< HEAD
     var diamond_btn = $("#diamond-button");
     diamond_btn.prop("disabled", true);
 
 </script>
 </html><!DOCTYPE html>
+=======
+</html>
+>>>>>>> 662e9f6585a7f643cd11578dd3dbe0f82c6978b2
 
 

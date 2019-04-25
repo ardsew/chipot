@@ -5,6 +5,7 @@
 
 .odometer {
     font-size: 50px;
+    float:center;
 }
 
 #user-info {

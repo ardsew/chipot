@@ -11,10 +11,24 @@
     <script src="jquery-3.4.0.min.js"></script>
     <script src="http://github.hubspot.com/odometer/odometer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 
 </head>
 
 <body>
+	
+	 <div id="wrapper">
+        <div id="clouds"></div>
+        <div id="ground"></div>
+
+    <div class="animate one">
+        <h1 id="title">
+            <span>I</span><span>D</span><span>L</span><span>E</span>
+            <span>C</span><span>R</span><span>A</span><span>F</span><span>T</span>
+        </h1>
+    </div>
+	
+	
 <div class="container-fluid">
     <div class="jumbotron">
     <div class="modal-body row">
@@ -181,16 +195,16 @@
 
                 <div id = "miner-buttons">
                     <button id="wood-miner-button" type = "button" class = "btn btn-primary"><img class="miners" src ="./img/wood-miner.jpg"></button>
-                    <button id="stone-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/stone-miner.jpeg"></button>
+                    <button id="stone-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/stone-miner.png"></button>
                     <button id="coal-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/coal-miner.png"></button>
                 </div>
 
             </div>
             <div class="col-md-6">
                 <div id = "miner-buttons">
-                    <button id="iron-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/iron-miner.jpg"></button>
-                    <button id="gold-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/gold-miner.jpg"></button>
-                    <button id="diamond-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/diamond-miner.ico"></button>
+                    <button id="iron-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/iron-miner.png"></button>
+                    <button id="gold-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/gold-miner.png"></button>
+                    <button id="diamond-miner-button" type="button" class = "btn btn-primary"><img class="miners" src="./img/diamond-miner.png"></button>
                 </div>
             </div>
         </div>
@@ -231,6 +245,7 @@
         </div>
     </div>
     </div>
+</div>
 </div>
 </body>
 

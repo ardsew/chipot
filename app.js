@@ -1,46 +1,3 @@
-var width = 0;
-var wood_counter = 1;
-var stone_counter = 1;
-var coal_counter = 1;
-var diamond_counter = 1;
-var gold_counter = 1;
-var iron_counter = 1;
-
-// changes cursor to something else
-$('html,body').css('cursor','cell');
-$('.ml1 .letters').each(function(){
-  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
-});
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml1 .letter',
-    scale: [0.3,1],
-    opacity: [0,1],
-    translateZ: 0,
-    easing: "easeOutExpo",
-    duration: 600,
-    delay: function(el, i) {
-      return 70 * (i+1)
-    }
-  }).add({
-    targets: '.ml1 .line',
-    scaleX: [0,1],
-    opacity: [0.5,1],
-    easing: "easeOutExpo",
-    duration: 700,
-    offset: '-=875',
-    delay: function(el, i, l) {
-      return 80 * (l - i);
-    }
-  }).add({
-    targets: '.ml1',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1000
-  });
-
 var User = {
     userWood: 0,
     userStone: 0,   
@@ -48,57 +5,6 @@ var User = {
     userIron: 0,
     userGold: 0,
     userDiamond: 0
-}
-
-setTimeout(function(){
-    odometer.innerHTML = 456;
-}, 1000);
-
-var Progressbars = {
-    stonePB: document.getElementById('stone-progress-bar'),
-    coalPB: document.getElementById('coal-progress-bar'),
-    ironPB: document.getElementById('iron-progress-bar'),
-    goldPB: document.getElementById('gold-progress-bar'),
-    diamondPB: document.getElementById('diamond-progress-bar')
-}
-
-var Buttons = {
-    woodButton: document.getElementById('wood-button'),
-    stoneButton: document.getElementById('stone-button'),
-    coalButton: document.getElementById('coal-button'),
-    ironButton: document.getElementById('iron-button'),
-    goldButton: document.getElementById('gold-button'),
-    diamondButton: document.getElementById('diamond-button'),
-
-    woodMinerButton: document.getElementById('wood-miner-button'),
-    stoneMinerButton: document.getElementById('stone-miner-button'),
-    coalMinerButton: document.getElementById('coal-miner-button'),
-    ironMinerButton: document.getElementById('iron-miner-button'),
-    goldMinerButton: document.getElementById('gold-miner-button'),
-    diamondMinerButton: document.getElementById('diamond-miner-button'),
-
-    woodAxeButton: document.getElementById('wood-axe-button'),
-    stoneAxeButton: document.getElementById('stone-axe-button'),
-    purpleAxeButton: document.getElementById('purple-axe-button'),
-    ironAxeButton: document.getElementById('iron-axe-button'),
-    goldAxeButton: document.getElementById('gold-axe-button'),
-    diamondAxeButton: document.getElementById('diamond-axe-button')
-}
-
-var UIDisplay = {
-    woodAmt: document.getElementById('woodAmt'),
-    stoneAmt: document.getElementById('stoneAmt'),
-    coalAmt: document.getElementById('coalAmt'),
-    ironAmt: document.getElementById('ironAmt'),
-    goldAmt: document.getElementById('goldAmt'),
-    diamondAmt: document.getElementById('diamondAmt'),
-
-    woodMineTime: document.getElementById('woodMineTime'),
-    stoneMineTime: document.getElementById('stoneMineTime'),
-    coalMineTime: document.getElementById('coalMineTime'),
-    ironMineTime: document.getElementById('ironMineTime'),
-    goldMineTime: document.getElementById('goldMineTime'),
-    diamondMineTime: document.getElementById('diamondMineTime')
 }
 
 var ItemNames = {
@@ -185,24 +91,31 @@ var PurpleMineTimes = {
 }
 
 
-// The price corresponds to that resource
-// Example: wood miner would require 800 wood
-var MinerPrice = {
-    woodMinerPrice: 0,  //200
-    stoneMinerPrice: 0, //150
-    coalMinerPrice: 0,  //125
-    ironMinerPrice: 0,  //100
-    goldMinerPrice: 0,   //75
-    diamondMinerPrice: 0 //50
+var ownMiner = {
+    woodMiner: false,
+    stoneMiner: false,
+    coalMiner: false,
+    ironMiner: false,
+    goldMiner: false,
+    diamondMiner: false
 }
 
-var ownMiner = {
-    boolWoodMiner: false,
-    boolStoneMiner: false,
-    boolCoalMiner: false,
-    boolIronMiner: false,
-    boolGoldMiner: false,
-    boolDiamondMiner: false
+var useMiner = {
+    woodMiner: false,
+    stoneMiner: false,
+    coalMiner: false,
+    ironMiner: false,
+    goldMiner: false,
+    diamondMiner: false
+}
+
+var costMiner = {
+    woodMiner: {coal: 1, wood: 1}, //5 20
+    stoneMiner: {coal: 10, wood: 40, stone: 2}, //10 40 20
+    coalMiner: {coal: 100, wood: 400, gold: 50, diamond: 10},
+    ironMiner: {coal: 50, wood: 100, stone:20, iron: 20},
+    goldMiner: {coal: 100, wood: 400, gold: 50},
+    diamondMiner: {coal: 500, wood: 2000, diamond: 50}
 }
 
 var ownAxe = {
@@ -223,6 +136,65 @@ var costAxe = {
     diamondAxe: {coal: 500, wood: 2000, diamond: 50}
 }
 
+var Progressbars = {
+    stonePB: document.getElementById('stone-progress-bar'),
+    coalPB: document.getElementById('coal-progress-bar'),
+    ironPB: document.getElementById('iron-progress-bar'),
+    goldPB: document.getElementById('gold-progress-bar'),
+    diamondPB: document.getElementById('diamond-progress-bar')
+}
+
+var Buttons = {
+    woodButton: document.getElementById('wood-button'),
+    stoneButton: document.getElementById('stone-button'),
+    coalButton: document.getElementById('coal-button'),
+    ironButton: document.getElementById('iron-button'),
+    goldButton: document.getElementById('gold-button'),
+    diamondButton: document.getElementById('diamond-button'),
+
+    woodMinerButton: document.getElementById('wood-miner-button'),
+    stoneMinerButton: document.getElementById('stone-miner-button'),
+    coalMinerButton: document.getElementById('coal-miner-button'),
+    ironMinerButton: document.getElementById('iron-miner-button'),
+    goldMinerButton: document.getElementById('gold-miner-button'),
+    diamondMinerButton: document.getElementById('diamond-miner-button'),
+
+    woodAxeButton: document.getElementById('wood-axe-button'),
+    stoneAxeButton: document.getElementById('stone-axe-button'),
+    purpleAxeButton: document.getElementById('purple-axe-button'),
+    ironAxeButton: document.getElementById('iron-axe-button'),
+    goldAxeButton: document.getElementById('gold-axe-button'),
+    diamondAxeButton: document.getElementById('diamond-axe-button')
+}
+
+var UIDisplay = {
+    woodAmt: document.getElementById('woodAmt'),
+    stoneAmt: document.getElementById('stoneAmt'),
+    coalAmt: document.getElementById('coalAmt'),
+    ironAmt: document.getElementById('ironAmt'),
+    goldAmt: document.getElementById('goldAmt'),
+    diamondAmt: document.getElementById('diamondAmt'),
+
+    woodMineTime: document.getElementById('woodMineTime'),
+    stoneMineTime: document.getElementById('stoneMineTime'),
+    coalMineTime: document.getElementById('coalMineTime'),
+    ironMineTime: document.getElementById('ironMineTime'),
+    goldMineTime: document.getElementById('goldMineTime'),
+    diamondMineTime: document.getElementById('diamondMineTime')
+}
+
+var width = 0;
+var wood_counter = 1;
+var stone_counter = 1;
+var coal_counter = 1;
+var diamond_counter = 1;
+var gold_counter = 1;
+var iron_counter = 1;
+
+setTimeout(function(){
+    odometer.innerHTML = 456;
+}, 1000);
+
 main();
 
 function main() {
@@ -240,32 +212,16 @@ function main() {
 
     Buttons.goldButton.addEventListener('click',
     mine.bind(this, ItemHealths.goldHealth, ItemNames.gold, UserMineTimes.goldTime));
-
+    
     Buttons.diamondButton.addEventListener('click',
     mine.bind(this, ItemHealths.diamondHealth, ItemNames.diamond, UserMineTimes.diamondTime));
 
-    Buttons.woodMinerButton.addEventListener('click', function(){buyMiner(ItemNames.wood);});
-    Buttons.stoneMinerButton.addEventListener('click', function(){buyMiner(ItemNames.stone);});
-    Buttons.coalMinerButton.addEventListener('click', function(){buyMiner(ItemNames.coal);});
-    Buttons.ironMinerButton.addEventListener('click', function(){buyMiner(ItemNames.iron);});
-    Buttons.goldMinerButton.addEventListener('click', function(){buyMiner(ItemNames.gold);});
-    Buttons.diamondMinerButton.addEventListener('click', function(){buyMiner(ItemNames.diamond);});
-
-    //AutoClicker portion
-    setInterval(function(){
-        if(ownMiner.boolWoodMiner == true)
-            Buttons.woodButton.click();
-        if(ownMiner.boolStoneMiner == true)
-            Buttons.stoneButton.click();
-        if(ownMiner.boolCoalMiner == true)
-            Buttons.coalButton.click();
-        if(ownMiner.boolIronMiner == true)
-            Buttons.ironButton.click();
-        if(ownMiner.boolGoldMiner == true)
-            Buttons.goldButton.click();
-        if(ownMiner.boolDiamondMiner == true)
-            Buttons.diamondButton.click();
-    },1000)
+    Buttons.woodMinerButton.addEventListener('click', function(){clickMiner(ItemNames.wood);});
+    Buttons.stoneMinerButton.addEventListener('click', function(){clickMiner(ItemNames.stone);});
+    Buttons.coalMinerButton.addEventListener('click', function(){clickMiner(ItemNames.coal);});
+    Buttons.ironMinerButton.addEventListener('click', function(){clickMiner(ItemNames.iron);});
+    Buttons.goldMinerButton.addEventListener('click', function(){clickMiner(ItemNames.gold);});
+    Buttons.diamondMinerButton.addEventListener('click', function(){clickMiner(ItemNames.diamond);});
 
     Buttons.woodAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.wood); });
     Buttons.stoneAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.stone); });
@@ -274,79 +230,23 @@ function main() {
     Buttons.goldAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.gold); });
     Buttons.diamondAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.diamond); });
 
+    //AutoClicker portion
+    setInterval(function(){
+        if(useMiner.woodMiner == true)
+            Buttons.woodButton.click();
+        if(useMiner.stoneMiner == true)
+            Buttons.stoneButton.click();
+        if(useMiner.coalMiner == true)
+            Buttons.coalButton.click();
+        if(useMiner.ironMiner == true)
+            Buttons.ironButton.click();
+        if(useMiner.goldMiner == true)
+            Buttons.goldButton.click();
+        if(useMiner.diamondMiner == true)
+            Buttons.diamondButton.click();
+    },1000)
+
     setMineTimes("User");
-}
-
-
-//This function buys miners and subtracts the needed amount of resource from what user has
-//updates UI, changes background color to red
-function buyMiner(item){
-    var woodRequired = parseInt(MinerPrice.woodMinerPrice) - parseInt(User.userWood);
-    var stoneRequired = parseInt(MinerPrice.stoneMinerPrice) - parseInt(User.userStone);
-    var coalRequired = parseInt(MinerPrice.coalMinerPrice) - parseInt(User.userCoal);
-    var ironRequired = parseInt(MinerPrice.ironMinerPrice) - parseInt(User.userIron);
-    var goldRequired = parseInt(MinerPrice.goldMinerPrice) - parseInt(User.userGold);
-    var diamondRequired = parseInt(MinerPrice.diamondMinerPrice) - parseInt(User.userDiamond);
-
-    if(item == "wood"){ 
-        if(parseInt(User.userWood) >= parseInt(MinerPrice.woodMinerPrice)){
-            ownMiner.boolWoodMiner = true;
-            User.userWood -= MinerPrice.woodMinerPrice;
-            Buttons.woodMinerButton.disabled = true;
-            Buttons.woodMinerButton.style.backgroundColor = "red";
-            updateUI();
-        }else {alert("You need: " + woodRequired + " wood");}
-    }
-
-    if(item == "stone"){
-        if(parseInt(User.userStone) >= parseInt(MinerPrice.stoneMinerPrice)){
-            ownMiner.boolStoneMiner = true;
-            User.userStone -= MinerPrice.stoneMinerPrice;
-            Buttons.stoneMinerButton.disabled = true;
-            Buttons.stoneMinerButton.style.backgroundColor = "red";
-            updateUI();
-        }else{alert("You need: " + stoneRequired + " stone");}
-    }
-    
-    if(item == "coal"){
-        if(parseInt(User.userCoal) >= parseInt(MinerPrice.coalMinerPrice)){
-            ownMiner.boolCoalMiner = true;
-            User.userCoal -= MinerPrice.coalMinerPrice;
-            Buttons.coalMinerButton.disabled = true;
-            Buttons.coalMinerButton.style.backgroundColor = "red";
-            updateUI();
-        }else{alert("You need: " + coalRequired + " coal");}
-    }
-
-    if(item == "iron"){
-        if(parseInt(User.userIron) >= parseInt(MinerPrice.ironMinerPrice)){
-            ownMiner.boolIronMiner = true;
-            User.userIron -= MinerPrice.ironMinerPrice;
-            Buttons.ironMinerButton.disabled = true;
-            Buttons.ironMinerButton.style.backgroundColor = "red";
-            updateUI();
-        }else{alert("You need: " + ironRequired + " iron");}
-    }
-
-    if(item == "gold"){
-        if(parseInt(User.userGold) >= parseInt(MinerPrice.goldMinerPrice)){
-            ownMiner.boolGoldMiner = true;
-            User.userGold -= MinerPrice.goldMinerPrice;
-            Buttons.goldMinerButton.disabled = true;
-            Buttons.goldMinerButton.style.backgroundColor = "red";
-            updateUI();
-        }else{alert("You need: " + goldRequired + " gold");}
-    }
-    
-    if(item == "diamond"){
-        if(parseInt(User.userDiamond) >= parseInt(MinerPrice.diamondMinerPrice)){
-            ownMiner.boolDiamondMiner = true;
-            User.userDiamond -= MinerPrice.diamondMinerPrice;
-            Buttons.diamondMinerButton.disabled = true;
-            Buttons.diamondMinerButton.style.backgroundColor = "red";
-            updateUI();
-        }else{alert("You need: " + diamondRequired + " diamond");}
-    }
 }
 
 function mine(health, item, time) {
@@ -452,8 +352,32 @@ function clickAxe(item){
     promptWindowOpen = true;
 }
 
+var currentManager; 
+function clickMiner(item){
+    if(promptWindowOpen == true){
+        exitPrompt();
+    }
+    promptCurrent = item;
+    if(ownMiner[item + "Miner"] == false){
+        document.getElementById('prompt-title').innerHTML = "Buy " + item + " miner";
+        promptMaterialAccount("Miner", item);
+        document.getElementById('prompt-window').style.display = "inline";
+    }
+    else{
+        document.getElementById('prompt-title').innerHTML = item + " miner";
+        promptUse("Miner", item, useMiner[item + "Miner"]);
+        document.getElementById('prompt-window').style.display = "inline";
+    }
+    setTimeout(function(){
+        if(promptWindowOpen && item == promptCurrent){
+            clickMiner(item);
+        }
+    }, 1000);
+    promptWindowOpen = true;
+}
+
 function promptUse(type, item, use){
-    document.getElementById('prompt-col').innerHTML = "<img id='prompt-use-img' src=./img/" + item + "-" + uncapitalize(type) + ".png>";
+    document.getElementById('prompt-col').innerHTML = "<img id='prompt-use-img' src=./img/" + item + "-" + uncapitalize(type) + ".png> <br>";
     document.getElementById('prompt-col').className = 'col-md-12';
     document.getElementById('prompt-col').style.display = 'inline';
     if(use){
@@ -556,6 +480,9 @@ function useItem(){
     if(capitalize(type) == "Axe"){
         useAxe(item);
     }
+    else if(capitalize(type) == "Miner"){
+        setMiner(item);
+    }
     exitPrompt();
 }
 
@@ -564,6 +491,9 @@ function pauseItem(){
     var item = document.getElementById('use').getAttribute("arg2");
     if(capitalize(type) == "Axe"){
         pauseAxe(item);
+    }
+    else if(capitalize(type) == "Miner"){
+        pauseMiner(item);
     }
     exitPrompt();
 }
@@ -584,3 +514,46 @@ function setMineTimes(item){
         document.getElementById(item.toString()).innerHTML = list[item]/1000;
     }
 }
+
+function setMiner(item){
+    useMiner[item + "Miner"] = true;
+}
+
+function pauseMiner(item){
+    useMiner[item + "Miner"] = false;
+}
+
+// changes cursor to something else
+$('html,body').css('cursor','cell');
+$('.ml1 .letters').each(function(){
+  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml1 .letter',
+    scale: [0.3,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 600,
+    delay: function(el, i) {
+      return 70 * (i+1)
+    }
+  }).add({
+    targets: '.ml1 .line',
+    scaleX: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700,
+    offset: '-=875',
+    delay: function(el, i, l) {
+      return 80 * (l - i);
+    }
+  }).add({
+    targets: '.ml1',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });

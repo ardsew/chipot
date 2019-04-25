@@ -322,7 +322,7 @@ function main() {
     },1000)
 
     for(var button in Buttons){
-        Buttons[button].setAttribute("disabled", true);
+        Buttons[button].setAttribute("enabled", true);
     }
 
     Buttons.woodButton.removeAttribute("disabled");
@@ -393,22 +393,22 @@ function mine(health, item, time) {
 
 function addItemToUser(item) {
     if (item == 'wood') {
-        User.userWood += 1;
+        User.userWood += wood_counter;
         wood_counter++;
     } else if (item == 'stone') {
-        User.userStone+= 1;
+        User.userStone+= stone_counter;
         stone_counter++;
     } else if (item =='coal') {
-        User.userCoal+= 1;
+        User.userCoal+= coal_counter;
         coal_counter++;
     } else if (item =='iron') {
-        User.userIron+= 1;
+        User.userIron+= iron_counter;
         iron_counter++;
     } else if(item == 'gold') {
-        User.userGold+= 1;
+        User.userGold+= gold_counter;
         gold_counter++;
     } else if (item == 'diamond') {
-        User.userDiamond+= 1;
+        User.userDiamond+= diamond_counter;
         diamond_counter++;
     }
 }
@@ -679,7 +679,7 @@ anime.timeline({loop: true})
     opacity: [0,1],
     translateZ: 0,
     easing: "easeOutExpo",
-    duration: 600,
+    duration: 5000,
     delay: function(el, i) {
       return 70 * (i+1)
     }
@@ -696,7 +696,7 @@ anime.timeline({loop: true})
   }).add({
     targets: '.ml1',
     opacity: 0,
-    duration: 1000,
+    duration: 80000,
     easing: "easeOutExpo",
     delay: 1000
   });

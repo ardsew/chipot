@@ -6,9 +6,44 @@ var diamond_counter = 1;
 var gold_counter = 1;
 var iron_counter = 1;
 
+// changes cursor to something else
+$('html,body').css('cursor','cell');
+$('.ml1 .letters').each(function(){
+  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml1 .letter',
+    scale: [0.3,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 600,
+    delay: function(el, i) {
+      return 70 * (i+1)
+    }
+  }).add({
+    targets: '.ml1 .line',
+    scaleX: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700,
+    offset: '-=875',
+    delay: function(el, i, l) {
+      return 80 * (l - i);
+    }
+  }).add({
+    targets: '.ml1',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
 var User = {
     userWood: 0,
-    userStone: 0,
+    userStone: 0,   
     userCoal: 0,
     userIron: 0,
     userGold: 0,
@@ -377,9 +412,11 @@ function promptMaterialAccount(item, type){
     document.getElementById('prompt-window').style.height = (23 + i*7) + "%";
 }
 
+// exits popup display from clicking on an Upgrade
 function exitPrompt(){
     document.getElementById('button-col').style.display = 'none';
     document.getElementById('button-col1').style.display = 'none';
     document.getElementById('button-col2').style.display = 'none';
     document.getElementById('prompt-window').style.display = 'none';
 }
+

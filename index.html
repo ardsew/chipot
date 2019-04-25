@@ -10,6 +10,7 @@
     <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
     <script src="jquery-3.4.0.min.js"></script>
     <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 </head>
 
@@ -17,6 +18,37 @@
 <div class="container-fluid">
     <div class="jumbotron">
     <div class="modal-body row">
+        <div class="col-md-6">
+            <h1 class="ml1">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">RESOURCES</span>
+                <span class="line line2"></span>
+              </span>
+            </h1>
+        </div>
+
+        <div class="col-md-3">
+            <h1 class="ml1">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">MANAGERS</span>
+                <span class="line line2"></span>
+              </span>
+            </h1>
+        </div>
+
+        <div class="col-md-3">
+            <h1 class="ml1">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">UPGRADES</span>
+                <span class="line line2"></span>
+              </span>
+            </h1>
+        </div>
+
+        <br>
         <div class="col-md-3">
 
             <div class="container" style="width: 100%">
@@ -182,19 +214,7 @@
     </div>
 
     <div class="modal-body row">
-<!-- 
-        <div class="col-md-3">
-                tools
-        </div>
 
-        <div class="col-md-3">
-                tools
-        </div>
-
-        <div class="col-md-3">
-                tools
-        </div>
- -->
         <div class="col-md-3" id="crafting-table">
             <div class="container" style="width: 100%">
                 <div class="col-md-8">
@@ -307,6 +327,8 @@
             }, 700);
         }, 3000);
     });
+    var stone_btn = $("#stone-button");
+    stone_btn.prop("disabled", true);
 
     $('#coal-button').click(function(){
         $('#coal-button').attr('disabled','disabled');
@@ -319,6 +341,9 @@
         }, 5000);
     });
 
+    var coal_btn = $("#coal-button");
+    coal_btn.prop("disabled", true);
+
     $('#iron-button').click(function(){
         $('#iron-button').attr('disabled','disabled');
         $('#iron-progress-bar').animate({width:'100%'}, 6000, 'linear');
@@ -329,6 +354,9 @@
             }, 700);
         }, 7000);
     });
+
+    var iron_btn = $("#iron-button");
+    iron_btn.prop("disabled", true);
 
     $('#gold-button').click(function(){
         $('#gold-button').attr('disabled','disabled');
@@ -341,6 +369,9 @@
         }, 9000);
     });
 
+    var gold_btn = $("#gold-button");
+    gold_btn.prop("disabled", true);
+
     $('#diamond-button').click(function(){
         $('#diamond-button').attr('disabled','disabled');
         $('#diamond-progress-bar').animate({width:'100%'}, 10000, 'linear');
@@ -351,8 +382,11 @@
             }, 700);
         }, 11000);
     });
-</script>
 
+    var diamond_btn = $("#diamond-button");
+    diamond_btn.prop("disabled", true);
+
+</script>
 </html><!DOCTYPE html>
 
 

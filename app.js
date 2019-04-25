@@ -271,18 +271,54 @@ function main() {
 
     //AutoClicker portion
     setInterval(function(){
-        if(useMiner.woodMiner == true)
+        if(useMiner.woodMiner == true && 
+            Buttons.woodButton.getAttribute("disabled") == null){
             Buttons.woodButton.click();
-        if(useMiner.stoneMiner == true)
+            Buttons.woodMinerButton.style.backgroundColor = "LightSkyBlue";
+            setTimeout(function(){
+                Buttons.woodMinerButton.style.backgroundColor = "transparent";
+            }, 100);
+        }
+        if(useMiner.stoneMiner == true &&
+            Buttons.stoneButton.getAttribute("disabled") == null){
             Buttons.stoneButton.click();
-        if(useMiner.coalMiner == true)
+            Buttons.stoneMinerButton.style.backgroundColor = "Orange";
+            setTimeout(function(){
+                Buttons.stoneMinerButton.style.backgroundColor = "transparent";
+            }, 100);
+        }
+        if(useMiner.coalMiner == true &&
+            Buttons.coalButton.getAttribute("disabled") == null){
             Buttons.coalButton.click();
-        if(useMiner.ironMiner == true)
+            Buttons.coalMinerButton.style.backgroundColor = "MediumSeaGreen";
+            setTimeout(function(){
+                Buttons.coalMinerButton.style.backgroundColor = "transparent";
+            }, 100);
+        }
+        if(useMiner.ironMiner == true &&
+            Buttons.ironButton.getAttribute("disabled") == null){
             Buttons.ironButton.click();
-        if(useMiner.goldMiner == true)
+            Buttons.ironMinerButton.style.backgroundColor = "Green";
+            setTimeout(function(){
+                Buttons.ironMinerButton.style.backgroundColor = "transparent";
+            }, 100);
+        }
+        if(useMiner.goldMiner == true &&
+            Buttons.goldButton.getAttribute("disabled") == null){
             Buttons.goldButton.click();
-        if(useMiner.diamondMiner == true)
+            Buttons.goldMinerButton.style.backgroundColor = "Black";
+            setTimeout(function(){
+                Buttons.goldMinerButton.style.backgroundColor = "transparent";
+            }, 100);
+        }
+        if(useMiner.diamondMiner == true &&
+            Buttons.diamondButton.getAttribute("disabled") == null){
             Buttons.diamondButton.click();
+            Buttons.diamondMinerButton.style.backgroundColor = "Turquoise";
+            setTimeout(function(){
+                Buttons.diamondMinerButton.style.backgroundColor = "transparent";
+            }, 100);
+        }
     },1000)
 
     for(var button in Buttons){
@@ -336,11 +372,11 @@ function unlockItems(){
         Buttons.ironAxeButton.removeAttribute("disabled");
         Unlock["unlock5"] = true;
     }
-    else if(ownMiner.woodMiner == true && !Unlock["unlock6"]){
+    else if(ownMiner.woodMiner == true && !Unlock["unlock6"] && Unlock["unlock5"]){
         Buttons.goldAxeButton.removeAttribute("disabled");
         Unlock["unlock6"]= true;
     }
-    else if(ownMiner.stoneMiner == true){
+    else if(ownMiner.stoneMiner == true && Unlock["unlock6"]){
         Buttons.diamondAxeButton.removeAttribute("disabled");
         Unlock["done"] = true;
     }

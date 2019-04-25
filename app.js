@@ -481,7 +481,6 @@ function clickAxe(item){
     }
     setTimeout(function(){
         if(promptWindowOpen && item + "Axe" == promptCurrent){
-            console.log(promptCurrent);
             clickAxe(item);
         }
     }, 1000);
@@ -506,7 +505,6 @@ function clickMiner(item){
     }
     setTimeout(function(){
         if(promptWindowOpen && item + "Miner" == promptCurrent){
-            console.log(promptCurrent);
             clickMiner(item);
         }
     }, 1000);
@@ -637,11 +635,18 @@ function pauseItem(){
 }
 
 function useAxe(item){
-  setMineTimes(item);
-  currentAxe = item;
+    for(var axe in ItemNames){
+        if(axe != "coal"){
+            document.getElementById(ItemNames[axe] + "-axe-button").style.backgroundColor = "transparent";
+        }
+    }
+    document.getElementById(uncapitalize(item) + "-axe-button").style.backgroundColor = "Cyan";
+    setMineTimes(item);
+    currentAxe = item;
 }
 
 function pauseAxe(item){
+    document.getElementById(uncapitalize(item) + "-axe-button").style.backgroundColor = "transparent";
     setMineTimes("User");
     currentAxe = "User";
 }

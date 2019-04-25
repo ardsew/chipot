@@ -112,13 +112,23 @@ var StoneMineTimes = {
     diamondTime: 9000
 }
 
-var goldMineTimes = {
+
+var IronMineTimes = {
     woodTime: 0,
     stoneTime: 0,
     coalTime: 2000,
-    ironTime: 4000,
-    goldTime: 6000,
+    ironTime: 1000,
+    goldTime: 7000,
     diamondTime: 8000
+}
+
+var GoldMineTimes = {
+    woodTime: 0,
+    stoneTime: 0,
+    coalTime: 1000,
+    ironTime: 2000,
+    goldTime: 3000,
+    diamondTime: 7000
 }
 
 var DiamondMineTimes = {
@@ -130,7 +140,7 @@ var DiamondMineTimes = {
     diamondTime: 3000
 }
 
-var purpleMineTimes = {
+var PurpleMineTimes = {
     woodTime: 0,
     stoneTime: 0,
     coalTime: 0,
@@ -459,7 +469,6 @@ function promptMaterialAccount(type, item){
     }
     prompt += "</p>";
     document.getElementById('prompt-col2').innerHTML = prompt;
-<<<<<<< HEAD
 
     document.getElementById('prompt-col1').className = 'col-md-6';
     document.getElementById('prompt-col2').className = 'col-md-6';
@@ -475,10 +484,6 @@ function promptMaterialAccount(type, item){
         document.getElementById('button-col2').style.display = "inline";
     }
     else{
-=======
-    if(buy){
-    }{
->>>>>>> 59fa2f07aebdbeb406ac2634454d5544169e3f42
         document.getElementById('button-col').className = "col-md-12";
         document.getElementById('button-col').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
         document.getElementById('button-col').style.display = "inline";

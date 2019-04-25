@@ -322,7 +322,7 @@ function main() {
     },1000)
 
     for(var button in Buttons){
-        Buttons[button].setAttribute("disabled", true);
+        Buttons[button].setAttribute("enabled", true);
     }
 
     Buttons.woodButton.removeAttribute("disabled");
@@ -674,7 +674,7 @@ anime.timeline({loop: true})
     opacity: [0,1],
     translateZ: 0,
     easing: "easeOutExpo",
-    duration: 600,
+    duration: 5000,
     delay: function(el, i) {
       return 70 * (i+1)
     }
@@ -691,7 +691,7 @@ anime.timeline({loop: true})
   }).add({
     targets: '.ml1',
     opacity: 0,
-    duration: 1000,
+    duration: 80000,
     easing: "easeOutExpo",
     delay: 1000
   });

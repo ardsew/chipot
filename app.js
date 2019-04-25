@@ -75,7 +75,7 @@ var ItemHealths = {
     diamondHealth: 11
 }
 
-var MineTimes = {
+var UserMineTimes = {
     woodTime: 0,
     stoneTime: 3000,
     coalTime: 5000,
@@ -83,6 +83,52 @@ var MineTimes = {
     goldTime: 9000,
     diamondTime: 11000
 }
+
+var WoodMineTimes = {
+    woodTime: 0,
+    stoneTime: 2000,
+    coalTime: 4000,
+    ironTime: 6000,
+    goldTime: 8000,
+    diamondTime: 10000
+}
+
+var StoneMineTimes = {
+    woodTime: 0,
+    stoneTime: 1000,
+    coalTime: 3000,
+    ironTime: 5000,
+    goldTime: 7000,
+    diamondTime: 9000
+}
+
+var goldMineTimes = {
+    woodTime: 0,
+    stoneTime: 0,
+    coalTime: 2000,
+    ironTime: 4000,
+    goldTime: 6000,
+    diamondTime: 8000
+}
+
+var DiamondMineTimes = {
+    woodTime: 0,
+    stoneTime: 0,
+    coalTime: 0,
+    ironTime: 1000,
+    goldTime: 2000,
+    diamondTime: 3000
+}
+
+var purpleMineTimes = {
+    woodTime: 0,
+    stoneTime: 0,
+    coalTime: 0,
+    ironTime: 0,
+    goldTime: 1000,
+    diamondTime: 2000
+}
+
 
 // The price corresponds to that resource
 // Example: wood miner would require 800 wood
@@ -114,8 +160,8 @@ var ownAxe = {
 }
 
 var costAxe = {
-    woodAxe: {coal: 5, wood: 20},
-    stoneAxe: {coal: 10, wood: 40, stone: 20},
+    woodAxe: {coal: 1, wood: 1}, //5 20
+    stoneAxe: {coal: 10, wood: 40, stone: 2}, //10 40 20
     purpleAxe: {coal: 100, wood: 400, gold: 50, diamond: 10},
     ironAxe: {coal: 50, wood: 100, stone:20, iron: 20},
     goldAxe: {coal: 100, wood: 400, gold: 50},
@@ -126,22 +172,22 @@ main();
 
 function main() {
     Buttons.woodButton.addEventListener('click', 
-    mine.bind(this, ItemHealths.woodHealth, ItemNames.wood, MineTimes.woodTime));
+    mine.bind(this, ItemHealths.woodHealth, ItemNames.wood, UserMineTimes.woodTime));
 
     Buttons.stoneButton.addEventListener('click', 
-    mine.bind(this, ItemHealths.stoneHealth, ItemNames.stone, MineTimes.stoneTime));
+    mine.bind(this, ItemHealths.stoneHealth, ItemNames.stone, UserMineTimes.stoneTime));
 
     Buttons.coalButton.addEventListener('click', 
-    mine.bind(this, ItemHealths.coalHealth, ItemNames.coal, MineTimes.coalTime));
+    mine.bind(this, ItemHealths.coalHealth, ItemNames.coal, UserMineTimes.coalTime));
 
     Buttons.ironButton.addEventListener('click',
-    mine.bind(this, ItemHealths.ironHealth, ItemNames.iron, MineTimes.ironTime));
+    mine.bind(this, ItemHealths.ironHealth, ItemNames.iron, UserMineTimes.ironTime));
 
     Buttons.goldButton.addEventListener('click',
-    mine.bind(this, ItemHealths.goldHealth, ItemNames.gold, MineTimes.goldTime));
+    mine.bind(this, ItemHealths.goldHealth, ItemNames.gold, UserMineTimes.goldTime));
 
     Buttons.diamondButton.addEventListener('click',
-    mine.bind(this, ItemHealths.diamondHealth, ItemNames.diamond, MineTimes.diamondTime));
+    mine.bind(this, ItemHealths.diamondHealth, ItemNames.diamond, UserMineTimes.diamondTime));
 
     Buttons.woodMinerButton.addEventListener('click', function(){buyMiner(ItemNames.wood);});
     Buttons.stoneMinerButton.addEventListener('click', function(){buyMiner(ItemNames.stone);});
@@ -172,6 +218,8 @@ function main() {
     Buttons.ironAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.iron); });
     Buttons.goldAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.gold); });
     Buttons.diamondAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.diamond); });
+
+    setMineTimes("User");
 }
 
 
@@ -313,18 +361,63 @@ function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function clickAxe(item){
-    if(ownAxe[item + "Axe"] == false){
-        document.getElementById('prompt-title').innerHTML = "Buy " + item + " pickaxe";
-        promptMaterialAccount(item, "Axe");
-        document.getElementById('prompt-window').style.display = "inline";
-    }
+function uncapitalize(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
 }
 
-function promptMaterialAccount(item, type){
+var promptWindowOpen = false;
+var promptCurrent;
+var currentAxe; 
+function clickAxe(item){
+    if(promptWindowOpen == true){
+        exitPrompt();
+    }
+    promptCurrent = item;
+    if(ownAxe[item + "Axe"] == false){
+        document.getElementById('prompt-title').innerHTML = "Buy " + item + " pickaxe";
+        promptMaterialAccount("Axe", item);
+        document.getElementById('prompt-window').style.display = "inline";
+    }
+    else{
+        document.getElementById('prompt-title').innerHTML = item + " pickaxe";
+        promptUse("Axe", item, currentAxe == item);
+        document.getElementById('prompt-window').style.display = "inline";
+    }
+    setTimeout(function(){
+        if(promptWindowOpen && item == promptCurrent){
+            clickAxe(item);
+        }
+    }, 1000);
+    promptWindowOpen = true;
+}
+
+function promptUse(type, item, use){
+    document.getElementById('prompt-col').innerHTML = "<img id='prompt-use-img' src=./img/" + item + "-" + uncapitalize(type) + ".png>";
+    document.getElementById('prompt-col').className = 'col-md-12';
+    document.getElementById('prompt-col').style.display = 'inline';
+    if(use){
+        document.getElementById('button-col1').className = "col-md-6";
+        document.getElementById('button-col1').innerHTML = '<button id="use" onclick="pauseItem()" arg1="' + uncapitalize(type) + '" arg2="' + item + '">  pause' + '</button>';
+        document.getElementById('button-col1').style.display = "inline";
+        document.getElementById('button-col2').className = "col-md-6";
+        document.getElementById('button-col2').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
+        document.getElementById('button-col2').style.display = "inline";
+    }
+    else{
+        document.getElementById('button-col1').className = "col-md-6";
+        document.getElementById('button-col1').innerHTML = '<button id="use" onclick="useItem()" arg1="' + uncapitalize(type) + '" arg2="' + item + '">  use' + '</button>';
+        document.getElementById('button-col1').style.display = "inline";
+        document.getElementById('button-col2').className = "col-md-6";
+        document.getElementById('button-col2').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
+        document.getElementById('button-col2').style.display = "inline";
+    }
+    document.getElementById('prompt-window').style.height = "37%";
+}
+
+function promptMaterialAccount(type, item){
     //cost
     var prompt = "<p id='prompt-header'> <b>material</b> </p>";
-    var list = costAxe[item + type];
+    var list = eval("cost" + capitalize(type))[item + type];
     var i = 0;
     for(var material in list){
         i++;
@@ -335,7 +428,6 @@ function promptMaterialAccount(item, type){
 
     //user material
     prompt = "<p id='prompt-header'> <b>account</b> </p>";
-    var list = costAxe[item + type];
     var buy = true;
     for(var material in list){
         if(User["user"+ capitalize(material.toString())] < list[material]){
@@ -348,9 +440,21 @@ function promptMaterialAccount(item, type){
     }
     prompt += "</p>";
     document.getElementById('prompt-col2').innerHTML = prompt;
-    if(buy){
 
-    }{
+    document.getElementById('prompt-col1').className = 'col-md-6';
+    document.getElementById('prompt-col2').className = 'col-md-6';
+    document.getElementById('prompt-col1').style.display = 'inline';
+    document.getElementById('prompt-col2').style.display = 'inline';
+
+    if(buy){
+        document.getElementById('button-col1').className = "col-md-6";
+        document.getElementById('button-col1').innerHTML = '<button id="buy" onclick="buyItem()" arg1="' + type + '" arg2="' + item + '"> buy' + '</button>';
+        document.getElementById('button-col1').style.display = "inline";
+        document.getElementById('button-col2').className = "col-md-6";
+        document.getElementById('button-col2').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
+        document.getElementById('button-col2').style.display = "inline";
+    }
+    else{
         document.getElementById('button-col').className = "col-md-12";
         document.getElementById('button-col').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
         document.getElementById('button-col').style.display = "inline";
@@ -364,4 +468,54 @@ function exitPrompt(){
     document.getElementById('button-col1').style.display = 'none';
     document.getElementById('button-col2').style.display = 'none';
     document.getElementById('prompt-window').style.display = 'none';
+    document.getElementById('prompt-col1').style.display = 'none';
+    document.getElementById('prompt-col2').style.display = 'none';
+    document.getElementById('prompt-col').style.display = 'none';
+    promptWindowOpen = false;
+}
+
+function buyItem(){
+    var type = document.getElementById('buy').getAttribute("arg1");
+    var item = document.getElementById('buy').getAttribute("arg2");
+    var list = eval("cost" + capitalize(type))[item + type];
+    for(var material in list){
+        User["user"+ capitalize(material.toString())] -= list[material];
+    }
+    eval("own" + capitalize(type))[item + type] = true;
+    exitPrompt();
+}
+
+function useItem(){
+    var type = document.getElementById('use').getAttribute("arg1");
+    var item = document.getElementById('use').getAttribute("arg2");
+    if(capitalize(type) == "Axe"){
+        useAxe(item);
+    }
+    exitPrompt();
+}
+
+function pauseItem(){
+    var type = document.getElementById('use').getAttribute("arg1");
+    var item = document.getElementById('use').getAttribute("arg2");
+    if(capitalize(type) == "Axe"){
+        pauseAxe(item);
+    }
+    exitPrompt();
+}
+
+function useAxe(item){
+  setMineTimes(item);
+  currentAxe = item;
+}
+
+function pauseAxe(item){
+    setMineTimes("User");
+    currentAxe = "User";
+}
+
+function setMineTimes(item){
+    var list = eval(capitalize(item) + "MineTimes");
+    for(var item in list){
+        document.getElementById(item.toString()).innerHTML = list[item]/1000;
+    }
 }

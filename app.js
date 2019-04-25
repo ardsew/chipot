@@ -276,7 +276,7 @@ function main() {
             Buttons.woodButton.click();
             Buttons.woodMinerButton.style.backgroundColor = "LightSkyBlue";
             setTimeout(function(){
-                Buttons.woodMinerButton.style.backgroundColor = "transparent";
+                Buttons.woodMinerButton.style.backgroundColor = "LightSkyBlue";
             }, 100);
         }
         if(useMiner.stoneMiner == true &&
@@ -284,7 +284,7 @@ function main() {
             Buttons.stoneButton.click();
             Buttons.stoneMinerButton.style.backgroundColor = "Orange";
             setTimeout(function(){
-                Buttons.stoneMinerButton.style.backgroundColor = "transparent";
+                Buttons.stoneMinerButton.style.backgroundColor = "Orange";
             }, 100);
         }
         if(useMiner.coalMiner == true &&
@@ -292,7 +292,7 @@ function main() {
             Buttons.coalButton.click();
             Buttons.coalMinerButton.style.backgroundColor = "MediumSeaGreen";
             setTimeout(function(){
-                Buttons.coalMinerButton.style.backgroundColor = "transparent";
+                Buttons.coalMinerButton.style.backgroundColor = "MediumSeaGreen";
             }, 100);
         }
         if(useMiner.ironMiner == true &&
@@ -300,7 +300,7 @@ function main() {
             Buttons.ironButton.click();
             Buttons.ironMinerButton.style.backgroundColor = "Green";
             setTimeout(function(){
-                Buttons.ironMinerButton.style.backgroundColor = "transparent";
+                Buttons.ironMinerButton.style.backgroundColor = "Green";
             }, 100);
         }
         if(useMiner.goldMiner == true &&
@@ -308,7 +308,7 @@ function main() {
             Buttons.goldButton.click();
             Buttons.goldMinerButton.style.backgroundColor = "Black";
             setTimeout(function(){
-                Buttons.goldMinerButton.style.backgroundColor = "transparent";
+                Buttons.goldMinerButton.style.backgroundColor = "Red";
             }, 100);
         }
         if(useMiner.diamondMiner == true &&
@@ -316,7 +316,7 @@ function main() {
             Buttons.diamondButton.click();
             Buttons.diamondMinerButton.style.backgroundColor = "Turquoise";
             setTimeout(function(){
-                Buttons.diamondMinerButton.style.backgroundColor = "transparent";
+                Buttons.diamondMinerButton.style.backgroundColor = "Turquoise";
             }, 100);
         }
     },1000)
@@ -481,6 +481,7 @@ function clickAxe(item){
     }
     setTimeout(function(){
         if(promptWindowOpen && item + "Axe" == promptCurrent){
+            console.log(promptCurrent);
             clickAxe(item);
         }
     }, 1000);
@@ -505,6 +506,7 @@ function clickMiner(item){
     }
     setTimeout(function(){
         if(promptWindowOpen && item + "Miner" == promptCurrent){
+            console.log(promptCurrent);
             clickMiner(item);
         }
     }, 1000);
@@ -635,18 +637,11 @@ function pauseItem(){
 }
 
 function useAxe(item){
-    for(var axe in ItemNames){
-        if(axe != "coal"){
-            document.getElementById(ItemNames[axe] + "-axe-button").style.backgroundColor = "transparent";
-        }
-    }
-    document.getElementById(uncapitalize(item) + "-axe-button").style.backgroundColor = "Cyan";
-    setMineTimes(item);
-    currentAxe = item;
+  setMineTimes(item);
+  currentAxe = item;
 }
 
 function pauseAxe(item){
-    document.getElementById(uncapitalize(item) + "-axe-button").style.backgroundColor = "transparent";
     setMineTimes("User");
     currentAxe = "User";
 }
@@ -672,7 +667,7 @@ $('.ml1 .letters').each(function(){
   $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
 });
 
-anime.timeline({loop: true})
+anime.timeline({loop: false})
   .add({
     targets: '.ml1 .letter',
     scale: [0.3,1],
@@ -693,12 +688,6 @@ anime.timeline({loop: true})
     delay: function(el, i, l) {
       return 80 * (l - i);
     }
-  }).add({
-    targets: '.ml1',
-    opacity: 0,
-    duration: 80000,
-    easing: "easeOutExpo",
-    delay: 1000
   });
 
 document.addEventListener("DOMContentLoaded", function(event) {

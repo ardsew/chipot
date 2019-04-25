@@ -3,6 +3,10 @@
     float: left;
 }
 
+.odometer {
+    font-size: 50px;
+}
+
 #user-info {
     padding: 25px 10px 25px 10px;
     float: center;

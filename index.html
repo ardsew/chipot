@@ -4,31 +4,18 @@
 
 <head>
     <title>Minecraft Idle Clicker</title>
-
     <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
     <script src="jquery-3.4.0.min.js"></script>
+    <script src="http://github.hubspot.com/odometer/odometer.js"></script>
 
 </head>
+
 <body>
-
-    <!--
-            <div id="user-info" class="container" style="width: 50%">
-                <div>
-                   <h2>Coal: <var id="coalAmt">0</var></h2>
-                </div>
-            </div>
-
-
-            <div id="user-info" class="container" style="width: 50%">
-                <div>
-                    <h2>Iron: <var id="ironAmt">0</var></h2>
-                    <h2>Gold: <var id="goldAmt">0</var></h2>
-                    <h2>Diamond: <var id="diamondAmt">0</var></h2>
-                </div>
-            </div>
-    -->
-
+<div class="container-fluid">
+    <div class="jumbotron">
     <div class="modal-body row">
 
         <div class="col-md-3">
@@ -49,7 +36,9 @@
 
                     <div class="col-md-6">
                         <br>
-                        <h2><var id="woodAmt">0</var></h2>
+                        <h2>
+                            <span class='odometer' id="woodAmt">0</span>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -164,7 +153,6 @@
         </div>
 
         <div class="col-md-3">
-
             <div class="col-md-6">
 
                 <div id = "miner-buttons">
@@ -172,10 +160,9 @@
                     <button id="stone-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/stone-miner.png"></button>
                     <button id="coal-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/coal-miner.png"></button>
                 </div>
+
             </div>
-
             <div class="col-md-6">
-
                 <div id = "miner-buttons">
                     <button id="iron-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/iron-miner.png"></button>
                     <button id="gold-miner-button" type="button" class = "btn-secondary"><img class="miners" src="./img/gold-miner.png"></button>
@@ -184,7 +171,6 @@
             </div>
         </div>
 
-        
         <div class="col-md-3">
 
                 <div class="col-md-6">
@@ -208,7 +194,7 @@
     </div>
 
     <div class="modal-body row">
-
+<!-- 
         <div class="col-md-3">
                 tools
         </div>
@@ -220,7 +206,7 @@
         <div class="col-md-3">
                 tools
         </div>
-
+ -->
         <div class="col-md-3" id="crafting-table">
             <div class="container" style="width: 100%">
                 <div class="col-md-8">
@@ -291,7 +277,6 @@
                 </div>
         </div>
         </div>
-
     </div>
 
     <div id="prompt-window">
@@ -306,18 +291,20 @@
             <div id="button-col"> </div>
         </div>
     </div>
+    </div>
+</div>
 </body>
 
 <script src="app.js"></script>
 <script>
     $('#wood-button').click(function(){
-        $('#wood-button').attr('disabled','disabled');
+        $('#wood-button').attr('enabled','enabled');
         $('#wood-progress-bar').animate({width:'100%'}, 100, 'linear');
         setTimeout(function() {
-            $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
-            setTimeout(function(){  
-                $('#wood-button').removeAttr('disabled');
-            }, 700);
+            // $('#wood-progress-bar').animate({width:'0%'}, 100, 'swing');            
+            // setTimeout(function(){  
+            //     $('#wood-button').removeAttr('disabled');
+            // }, 700);
         }, 700);
     });
 

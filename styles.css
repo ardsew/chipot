@@ -252,3 +252,142 @@ td .tool {
 .button-col{
   display: none;
 }
+
+.animate {
+  font-size: 50px;
+  margin: 100px 0 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.animate span {
+  display: inline-block;
+}
+
+.animate span:nth-of-type(2) {
+  animation-delay: .05s;
+}
+.animate span:nth-of-type(3) {
+  animation-delay: .1s;
+}
+.animate span:nth-of-type(4) {
+  animation-delay: .15s;
+}
+.animate span:nth-of-type(5) {
+  animation-delay: .2s;
+}
+.animate span:nth-of-type(6) {
+  animation-delay: .25s;
+}
+.animate span:nth-of-type(7) {
+  animation-delay: .3s;
+}
+.animate span:nth-of-type(8) {
+  animation-delay: .35s;
+}
+.animate span:nth-of-type(9) {
+  animation-delay: .4s;
+}
+.animate span:nth-of-type(10) {
+  animation-delay: .45s;
+}
+.animate span:nth-of-type(11) {
+  animation-delay: .5s;
+}
+.animate span:nth-of-type(12) {
+  animation-delay: .55s;
+}
+.animate span:nth-of-type(13) {
+  animation-delay: .6s;
+}
+.animate span:nth-of-type(14) {
+  animation-delay: .65s;
+}
+.animate span:nth-of-type(15) {
+  animation-delay: .7s;
+}
+.animate span:nth-of-type(16) {
+  animation-delay: .75s;
+}
+.animate span:nth-of-type(17) {
+  animation-delay: .8s;
+}
+.animate span:nth-of-type(18) {
+  animation-delay: .85s;
+}
+.animate span:nth-of-type(19) {
+  animation-delay: .9s;
+}
+.animate span:nth-of-type(20) {
+  animation-delay: .95s;
+}
+
+.one span {
+  color: #24a8e6;
+  opacity: 0;
+  transform: translate(-150px, -50px) rotate(-180deg) scale(3);
+  animation: revolveScale .4s forwards;
+}
+
+@keyframes revolveScale {
+  60% {
+      transform: translate(20px, 20px) rotate(30deg) scale(.3);
+  }
+
+  100% {
+      transform: translate(0) rotate(0) scale(1);
+      opacity: 1;
+  }
+}
+
+#title {
+text-align: center;
+font-size: 2em;
+}
+
+html {
+height:100%;
+}
+
+body{
+margin:0;
+padding:0;
+background:#63D0FF;
+height:100%;
+}
+
+#wrapper {
+position:relative;
+width:100%;
+height:100%;
+}
+
+#clouds{
+opacity: 0.3;
+background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/56901/bg-clouds2-tinypng.png") repeat-x 0 bottom #ACE6FF;
+width:100%;
+height:230px; /*190px*/
+min-height:230px;
+position:absolute;
+top:0;
+left:0;
+z-index:1;
+-webkit-transform:translate3d(0,0,0.01);
+transform:translate3d(0,0,0.01);
+}
+
+#ground {
+opacity: 0.3;
+background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/56901/grass_tile-tinypng.png") repeat-x 0 0 transparent;    
+position: absolute;
+bottom: 0;
+left: 0;
+z-index:2;
+width: 100%;
+height: 192px;
+min-height:192px;
+border:0 none transparent;
+outline:0 none transparent;
+-webkit-transform:translate3d(0,0,0.01);
+transform:translate3d(0,0,0.01);
+will-change: transform;
+}

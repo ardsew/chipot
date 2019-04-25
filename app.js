@@ -34,7 +34,7 @@ var Buttons = {
 
     woodAxeButton: document.getElementById('wood-axe-button'),
     stoneAxeButton: document.getElementById('stone-axe-button'),
-    coalAxeButton: document.getElementById('coal-axe-button'),
+    purpleAxeButton: document.getElementById('purple-axe-button'),
     ironAxeButton: document.getElementById('iron-axe-button'),
     goldAxeButton: document.getElementById('gold-axe-button'),
     diamondAxeButton: document.getElementById('diamond-axe-button')
@@ -46,7 +46,14 @@ var UIDisplay = {
     coalAmt: document.getElementById('coalAmt'),
     ironAmt: document.getElementById('ironAmt'),
     goldAmt: document.getElementById('goldAmt'),
-    diamondAmt: document.getElementById('diamondAmt')
+    diamondAmt: document.getElementById('diamondAmt'),
+
+    woodMineTime: document.getElementById('woodMineTime'),
+    stoneMineTime: document.getElementById('stoneMineTime'),
+    coalMineTime: document.getElementById('coalMineTime'),
+    ironMineTime: document.getElementById('ironMineTime'),
+    goldMineTime: document.getElementById('goldMineTime'),
+    diamondMineTime: document.getElementById('diamondMineTime')
 }
 
 var ItemNames = {
@@ -55,7 +62,8 @@ var ItemNames = {
     coal: 'coal',
     iron: 'iron',
     gold: 'gold',
-    diamond: 'diamond'
+    diamond: 'diamond',
+    purple: 'purple'
 }
 
 var ItemHealths = {
@@ -94,6 +102,24 @@ var ownMiner = {
     boolIronMiner: false,
     boolGoldMiner: false,
     boolDiamondMiner: false
+}
+
+var ownAxe = {
+    woodAxe: false,
+    stoneAxe: false,
+    purpleAxe: false, 
+    ironAxe: false, 
+    goldAxe: false,
+    diamondAxe: false
+}
+
+var costAxe = {
+    woodAxe: {coal: 5, wood: 20},
+    stoneAxe: {coal: 10, wood: 40, stone: 20},
+    purpleAxe: {coal: 100, wood: 400, gold: 50, diamond: 10},
+    ironAxe: {coal: 50, wood: 100, stone:20, iron: 20},
+    goldAxe: {coal: 100, wood: 400, gold: 50},
+    diamondAxe: {coal: 500, wood: 2000, diamond: 50}
 }
 
 main();
@@ -139,7 +165,15 @@ function main() {
         if(ownMiner.boolDiamondMiner == true)
             Buttons.diamondButton.click();
     },1000)
+
+    Buttons.woodAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.wood); });
+    Buttons.stoneAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.stone); });
+    Buttons.purpleAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.purple); });
+    Buttons.ironAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.iron); });
+    Buttons.goldAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.gold); });
+    Buttons.diamondAxeButton.addEventListener('click', function(){ clickAxe(ItemNames.diamond); });
 }
+
 
 //This function buys miners and subtracts the needed amount of resource from what user has
 //updates UI, changes background color to red
@@ -273,4 +307,61 @@ function resetProgressBar() {
     Progressbars.ironPB.style.width = width;
     Progressbars.goldPB.style.width = width;
     Progressbars.diamondPB.style.width = width;
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function clickAxe(item){
+    if(ownAxe[item + "Axe"] == false){
+        document.getElementById('prompt-title').innerHTML = "Buy " + item + " pickaxe";
+        promptMaterialAccount(item, "Axe");
+        document.getElementById('prompt-window').style.display = "inline";
+    }
+}
+
+function promptMaterialAccount(item, type){
+    //cost
+    var prompt = "<p id='prompt-header'> <b>material</b> </p>";
+    var list = costAxe[item + type];
+    var i = 0;
+    for(var material in list){
+        i++;
+        prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + "  " + list[material] + "<br>";
+    }
+    prompt += "</p>";
+    document.getElementById('prompt-col1').innerHTML = prompt;
+
+    //user material
+    prompt = "<p id='prompt-header'> <b>account</b> </p>";
+    var list = costAxe[item + type];
+    var buy = true;
+    for(var material in list){
+        if(User["user"+ capitalize(material.toString())] < list[material]){
+            prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + " <span style='color:red'> " + User["user"+ capitalize(material.toString())] + "</span><br>";
+            buy = false;
+        }
+        else{
+            prompt +=  "<p id='prompt-text'> <img id='prompt-img' src=./img/" + material + ".png>" + " <span style='color:green'> " + User["user"+ capitalize(material.toString())] + "</span><br>";
+        }
+    }
+    prompt += "</p>";
+    document.getElementById('prompt-col2').innerHTML = prompt;
+    if(buy){
+
+    }{
+        document.getElementById('button-col').className = "col-md-12";
+        document.getElementById('button-col').innerHTML = "<button onclick='exitPrompt()'> exit </button>";
+        document.getElementById('button-col').style.display = "inline";
+    }
+
+    document.getElementById('prompt-window').style.height = (23 + i*7) + "%";
+}
+
+function exitPrompt(){
+    document.getElementById('button-col').style.display = 'none';
+    document.getElementById('button-col1').style.display = 'none';
+    document.getElementById('button-col2').style.display = 'none';
+    document.getElementById('prompt-window').style.display = 'none';
 }

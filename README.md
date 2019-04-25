@@ -4,6 +4,6 @@ A poor man's idle clicker game created by 4 people, that will never be completed
 Andrew Kim  
 Jerry  
 Tarik  
-Saij   
+Saif   
   
-Presentation: https://docs.google.com/document/d/1e4W13Hb9RKDINuf516kvs-w91PCy9H2BNiU1vAB2BMI/edit?usp=sharing
+Presentation: https://docs.google.com/presentation/d/1un5wZJRWWlMHG4qjEKC0keq-1aKaDT3iJgdnRMULjr0/edit#slide=id.p

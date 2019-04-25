@@ -533,10 +533,6 @@ function exitPrompt(){
     document.getElementById('button-col1').style.display = 'none';
     document.getElementById('button-col2').style.display = 'none';
     document.getElementById('prompt-window').style.display = 'none';
-<<<<<<< HEAD
-}
-
-=======
     document.getElementById('prompt-col1').style.display = 'none';
     document.getElementById('prompt-col2').style.display = 'none';
     document.getElementById('prompt-col').style.display = 'none';
@@ -588,4 +584,3 @@ function setMineTimes(item){
         document.getElementById(item.toString()).innerHTML = list[item]/1000;
     }
 }
->>>>>>> 662e9f6585a7f643cd11578dd3dbe0f82c6978b2

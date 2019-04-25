@@ -1,7 +1,7 @@
 # chipot
 A poor man's idle clicker game created by 4 people, that will never be completed.  
 
-Andrew Kim  
+Andrew  
 Jerry  
 Tarik  
 Saif   

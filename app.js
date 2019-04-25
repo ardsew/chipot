@@ -99,7 +99,6 @@ var PurpleMineTimes = {
     diamondTime: 2000
 }
 
-
 var ownMiner = {
     woodMiner: false,
     stoneMiner: false,
@@ -224,6 +223,15 @@ setTimeout(function(){
 
 main();
 
+var done = false;
+var unlock0 = false;
+var unlock1 = false;
+var unlock2 = false;
+var unlock3 = false;
+var unlock4 = false;
+var unlock5 = false;
+var unlock6 = false;
+
 function main() {
     Buttons.woodButton.addEventListener('click', 
     mine.bind(this, ItemHealths.woodHealth, ItemNames.wood, UserMineTimes.woodTime));
@@ -276,47 +284,61 @@ function main() {
     for(var button in Buttons){
         Buttons[button].setAttribute("disabled", true);
     }
+
     Buttons.woodButton.removeAttribute("disabled");
     setInterval(function(){
-        unlockItems();
-    }, 1000);
+        if(!done){
+            unlockItems();
+        }
+        else{
+            return;
+        }
+    }, 500);
 
     setMineTimes("User");
 }
 
 function unlockItems(){
-    if(User.userWood > 5){
+    if(User.userWood > 2 && !unlock0){
         Buttons.stoneButton.removeAttribute("disabled");
+        unlock0 = true;
     }
-    if(User.userStone > 0){
+    else if(User.userStone > 0 && !unlock1){
         Buttons.coalButton.removeAttribute("disabled");
         Buttons.woodMinerButton.removeAttribute("disabled");
+        unlock1 = true;
     }
-    if(User.userCoal > 0){
+    else if(User.userCoal > 0 && !unlock2){
         Buttons.ironButton.removeAttribute("disabled");
         Buttons.stoneMinerButton.removeAttribute("disabled");
         Buttons.woodAxeButton.removeAttribute("disabled");
+        unlock2 = true;
     }
-    if(User.userIron > 0){
+    else if(User.userIron > 0 && !unlock3){
         Buttons.goldButton.removeAttribute("disabled");
         Buttons.coalMinerButton.removeAttribute("disabled");
         Buttons.ironMinerButton.removeAttribute("disabled");
         Buttons.stoneAxeButton.removeAttribute("disabled");
+        unlock3 = true;
     }
-    if(User.userGold > 0){
+    else if(User.userGold > 0 && !unlock4){
         Buttons.diamondButton.removeAttribute("disabled");
         Buttons.goldMinerButton.removeAttribute("disabled");
         Buttons.purpleAxeButton.removeAttribute("disabled");
+        unlock4 = true;
     }
-    if(User.userDiamond > 0){
+    else if(User.userDiamond > 0 && !unlock5){
         Buttons.diamondMinerButton.removeAttribute("disabled");
         Buttons.ironAxeButton.removeAttribute("disabled");
+        unlock5 = true;
     }
-    if(ownMiner.woodMiner == true){
+    else if(ownMiner.woodMiner == true && !unlock6){
         Buttons.goldAxeButton.removeAttribute("disabled");
+        unlock6 = true;
     }
-    if(ownMiner.stoneMiner == true){
+    else if(ownMiner.stoneMiner == true){
         Buttons.diamondAxeButton.removeAttribute("disabled");
+        done = true;
     }
 }
 
@@ -331,22 +353,22 @@ function mine(health, item, time) {
 
 function addItemToUser(item) {
     if (item == 'wood') {
-        User.userWood += wood_counter;
+        User.userWood += 1;
         wood_counter++;
     } else if (item == 'stone') {
-        User.userStone+= stone_counter;
+        User.userStone+= 1;
         stone_counter++;
     } else if (item =='coal') {
-        User.userCoal+= coal_counter;
+        User.userCoal+= 1;
         coal_counter++;
     } else if (item =='iron') {
-        User.userIron+= iron_counter;
+        User.userIron+= 1;
         iron_counter++;
     } else if(item == 'gold') {
-        User.userGold+= gold_counter;
+        User.userGold+= 1;
         gold_counter++;
     } else if (item == 'diamond') {
-        User.userDiamond+= diamond_counter;
+        User.userDiamond+= 1;
         diamond_counter++;
     }
 }

@@ -258,7 +258,7 @@
         var t1, t2;
         t1 = (time == 0 || time == 1)?(100):(time*1000-1000);
         t2 = (t1 == 100)?(700):(time*1000);
-        $('#stone-button').attr('disabled','disabled');
+        $('#stone-button').attr('disabled', 'disabled');
         $('#stone-progress-bar').animate({width:'100%'}, t1, 'linear');
         var onComplete = function(){ console.log("here"); }
         setTimeout(function() {
@@ -268,9 +268,6 @@
             }, 700);
         }, t2);
     });
-
-   // var stone_btn = $("#stone-button");
-   // stone_btn.prop("disabled", true);
 
     $('#coal-button').click(function(){
         var time = $('#coalTime').text();
@@ -288,9 +285,6 @@
         }, t2);
     });
 
-    // var coal_btn = $("#coal-button");
-    // coal_btn.prop("disabled", true);
-
     $('#iron-button').click(function(){
         var time = $('#ironTime').text();
         time = Number(time);
@@ -306,9 +300,6 @@
             }, 700);
         }, t2);
     });
-
-    // var iron_btn = $("#iron-button");
-    // iron_btn.prop("disabled", true);
 
     $('#gold-button').click(function(){
         var time = $('#goldTime').text();
@@ -326,9 +317,6 @@
         }, t2);
     });
 
-    // var gold_btn = $("#gold-button");
-    // gold_btn.prop("disabled", true);
-
     $('#diamond-button').click(function(){
         var time = $('#diamondTime').text();
         time = Number(time);
@@ -344,8 +332,6 @@
             }, 700);
         }, t2);
     });
-    // var diamond_btn = $("#diamond-button");
-    // diamond_btn.prop("disabled", true);
 
 </script>
 

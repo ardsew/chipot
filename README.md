@@ -1,9 +1,16 @@
-# chipot
-A poor man's idle clicker game created by 4 people, that will never be completed.  
 
-Andrew  
-Jerry  
-Tarik  
-Saif   
-  
-Presentation: https://docs.google.com/presentation/d/1un5wZJRWWlMHG4qjEKC0keq-1aKaDT3iJgdnRMULjr0/edit#slide=id.p
+# Clicking Game
+
+This program is a clicking game where you collect resources by clicking on the resource icons and eventually automating the collection of resources.
+
+
+## Getting Started
+
+Simply download the zip and store the content somewhere on your desktop afterwards open the html file
+
+## Authors
+
+Andrew
+Jerry
+Tarik
+Saif
